@@ -1,0 +1,124 @@
+{
+    "reEngagementNotifications": {
+        "enabled": true,
+        "scheduleTime": "09:00:00",
+        "timezone": "America/New_York",
+        "inactivityThresholdHours": 24,
+        "campaigns": [
+            {
+                "id": "daily_reminder",
+                "name": "Daily Activity Reminder",
+                "enabled": true,
+                "targetInactiveHours": 24,
+                "messages": [
+                    {
+                        "title": "👋 We miss you!",
+                        "body": "Come back and earn more YUYU tokens! Your friends are waiting.",
+                        "data": {
+                            "app_url": "https://yourapp.com",
+                            "campaign_id": "daily_reminder"
+                        }
+                    },
+                    {
+                        "title": "🎁 Daily bonus waiting!",
+                        "body": "Log in now to claim your daily YUYU bonus!",
+                        "data": {
+                            "app_url": "https://yourapp.com",
+                            "campaign_id": "daily_reminder"
+                        }
+                    },
+                    {
+                        "title": "🔥 Keep your streak alive!",
+                        "body": "Don't break your activity streak! Come back today.",
+                        "data": {
+                            "app_url": "https://yourapp.com",
+                            "campaign_id": "daily_reminder"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "weekly_summary",
+                "name": "Weekly Activity Summary",
+                "enabled": true,
+                "targetInactiveHours": 168,
+                "messages": [
+                    {
+                        "title": "📊 Your Weekly Summary",
+                        "body": "See how much YUYU you earned this week and climb the leaderboard!",
+                        "data": {
+                            "app_url": "https://yourapp.com/leaderboard",
+                            "campaign_id": "weekly_summary"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "friend_activity",
+                "name": "Friend Activity Alert",
+                "enabled": true,
+                "targetInactiveHours": 48,
+                "messages": [
+                    {
+                        "title": "👥 Your friends are active!",
+                        "body": "{{friend_count}} friends are online now. Join them!",
+                        "data": {
+                            "app_url": "https://yourapp.com/friends",
+                            "campaign_id": "friend_activity"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "yuyu_milestone",
+                "name": "YUYU Milestone Reminder",
+                "enabled": true,
+                "targetInactiveHours": 72,
+                "messages": [
+                    {
+                        "title": "🏆 You're so close!",
+                        "body": "Just {{points_needed}} more YUYU to reach your next milestone!",
+                        "data": {
+                            "app_url": "https://yourapp.com",
+                            "campaign_id": "yuyu_milestone"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "referral_reminder",
+                "name": "Referral Bonus Reminder",
+                "enabled": true,
+                "targetInactiveHours": 120,
+                "messages": [
+                    {
+                        "title": "💰 Earn 100 YUYU per referral!",
+                        "body": "Share your referral code and earn rewards for each friend who joins.",
+                        "data": {
+                            "app_url": "https://yourapp.com/referrals",
+                            "campaign_id": "referral_reminder"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "notificationLimits": {
+        "maxNotificationsPerDay": 3,
+        "minHoursBetweenNotifications": 4,
+        "quietHoursStart": "22:00:00",
+        "quietHoursEnd": "08:00:00"
+    },
+    "customMessages": {
+        "welcomeBack": [
+            "Welcome back! 🎉",
+            "Great to see you again! 👋",
+            "You're back! 🌟"
+        ],
+        "encouragement": [
+            "You're doing great! Keep it up! 💪",
+            "Amazing progress! 🚀",
+            "You're on fire! 🔥"
+        ]
+    }
+}

@@ -1,0 +1,10 @@
+REVOKE ALL ON FUNCTION public.start_referral_campaign(integer) FROM PUBLIC;
+REVOKE ALL ON FUNCTION public.get_referral_unlock_status() FROM PUBLIC;
+REVOKE ALL ON FUNCTION public.register_verified_referral(text) FROM PUBLIC;
+REVOKE ALL ON FUNCTION public.begin_viral_clip_reward(text) FROM PUBLIC;
+REVOKE ALL ON FUNCTION public.claim_viral_clip_reward(uuid) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.start_referral_campaign(integer) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.get_referral_unlock_status() TO authenticated;
+GRANT EXECUTE ON FUNCTION public.register_verified_referral(text) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.begin_viral_clip_reward(text) TO authenticated;
+GRANT EXECUTE ON FUNCTION public.claim_viral_clip_reward(uuid) TO authenticated;

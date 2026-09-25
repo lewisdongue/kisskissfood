@@ -1,29 +1,35 @@
-# Welcome to your Lovable project
+# 🎤 AudioChat - Real-Time Voice Chat Platform
 
-This project was built with [Lovable](https://lovable.dev).
+random call with stranger
 
-## Build with Lovable
+A futuristic web-based platform for random audio-only conversations with gamification, retention features, and monetization.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## 🚀 Quick Start
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```
+npm install
 npm run dev
 ```
 
-## Built with
+## 🗄️ Database Setup Required
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+See SETUP.md for complete Supabase and Firebase configuration instructions.
+
+## 🚀 Features
+
+- ✅ Real-time audio calls via WebRTC
+- ✅ YUYU gamification system
+- ✅ Referral tracking & rewards
+- ✅ Multi-language support
+- ✅ Push notifications ready
+- ✅ Ad integration placeholders
+- ✅ Mobile responsive design
+
+For full documentation, see the project files.
+
+## Contact
+
+For support or inquiries:
+
+- Email: brosisus8@gmail.com
+- Instagram: https://www.instagram.com/lewis_yeager2?igsh=MXd1bXkyMzQxZXFlcA== (@lewis_yeager2)

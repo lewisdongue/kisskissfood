@@ -1,0 +1,79 @@
+-- WARNING: This schema is for context only and is not meant to be run.
+-- Table order and constraints may not be valid for execution.
+
+CREATE TABLE public.call_sessions (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  user1_id uuid,
+  user2_id uuid,
+  started_at timestamp with time zone DEFAULT now(),
+  ended_at timestamp with time zone,
+  duration integer,
+  CONSTRAINT call_sessions_pkey PRIMARY KEY (id),
+  CONSTRAINT call_sessions_user1_id_fkey FOREIGN KEY (user1_id) REFERENCES public.users(id),
+  CONSTRAINT call_sessions_user2_id_fkey FOREIGN KEY (user2_id) REFERENCES public.users(id)
+);
+CREATE TABLE public.friend_requests (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  from_user_id uuid,
+  to_user_id uuid,
+  status text DEFAULT 'pending'::text CHECK (status = ANY (ARRAY['pending'::text, 'accepted'::text, 'rejected'::text])),
+  from_user_confirmed boolean DEFAULT false,
+  to_user_confirmed boolean DEFAULT false,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT friend_requests_pkey PRIMARY KEY (id),
+  CONSTRAINT friend_requests_from_user_id_fkey FOREIGN KEY (from_user_id) REFERENCES public.users(id),
+  CONSTRAINT friend_requests_to_user_id_fkey FOREIGN KEY (to_user_id) REFERENCES public.users(id)
+);
+CREATE TABLE public.notifications (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  user_id uuid,
+  type text NOT NULL,
+  message text NOT NULL,
+  read boolean DEFAULT false,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT notifications_pkey PRIMARY KEY (id),
+  CONSTRAINT notifications_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id)
+);
+CREATE TABLE public.online_users (
+  user_id uuid NOT NULL,
+  language text NOT NULL,
+  last_seen timestamp with time zone DEFAULT now(),
+  CONSTRAINT online_users_pkey PRIMARY KEY (user_id),
+  CONSTRAINT online_users_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id)
+);
+CREATE TABLE public.referrals (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  referrer_id uuid,
+  referred_user_id uuid,
+  bonus_awarded boolean DEFAULT false,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT referrals_pkey PRIMARY KEY (id),
+  CONSTRAINT referrals_referrer_id_fkey FOREIGN KEY (referrer_id) REFERENCES public.users(id),
+  CONSTRAINT referrals_referred_user_id_fkey FOREIGN KEY (referred_user_id) REFERENCES public.users(id)
+);
+CREATE TABLE public.users (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  email text NOT NULL UNIQUE,
+  name text NOT NULL,
+  country text NOT NULL,
+  language text NOT NULL,
+  profile_picture text,
+  yuyu_score integer DEFAULT 0,
+  balance numeric DEFAULT 0,
+  referral_code text NOT NULL UNIQUE,
+  referred_by text,
+  hide_picture boolean DEFAULT false,
+  fcm_token text,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT users_pkey PRIMARY KEY (id),
+  CONSTRAINT users_id_fkey FOREIGN KEY (id) REFERENCES auth.users(id)
+);
+CREATE TABLE public.yuyu_logs (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  user_id uuid,
+  points integer NOT NULL,
+  description text,
+  created_at timestamp with time zone DEFAULT now(),
+  CONSTRAINT yuyu_logs_pkey PRIMARY KEY (id),
+  CONSTRAINT yuyu_logs_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id)
+);

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 1. HOMEPAGE & APP ENTRY -->
+  <url>
+    <loc>https://www.caakus.com/</loc>
+    <changefreq>always</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.caakus.com/logo.webp</image:loc>
+      <image:title>Caakus - Premium Video Chat</image:title>
+    </image:image>
+  </url>
+
+  <!-- 2. HIGH-CONVERSION ALTERNATIVES (Priority: 0.9) -->
+  <url>
+    <loc>https://www.caakus.com/omegle-alternative</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/monkey-app-alternative</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/chatroulette-alternative</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/ometv-alternative</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/azar-alternative</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/coomeet-alternative</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 3. TOP SEARCH INTENTS (Priority: 0.85) -->
+  <url>
+    <loc>https://www.caakus.com/random-video-chat</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/talk-to-strangers</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/meet-new-people</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/face-to-face-random-chat</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/no-signup-video-match</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/safe-chat-with-strangers</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/instant-live-cam-match</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.caakus.com/browser-based-video-chat</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- 4. ENGINEERING TOOLS & LEAD GEN (Priority: 0.8) -->
+  <url>
+    <loc>https://www.caakus.com/tools/video-call-speed-test</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 5. INTERNATIONAL HUBS (Priority: 0.8) -->
+  <url>
+    <loc>https://www.caakus.com/de/omegle-alternative</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
