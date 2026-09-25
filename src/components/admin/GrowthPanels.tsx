@@ -48,7 +48,10 @@ const Metric: React.FC<{ color: string; label: string; value: number; format?: (
 );
 
 function exportCsv(name: string, rows: Record<string, unknown>[]) {
-  if (!rows.length) return toast.error('Nothing to export');
+  if (!rows.length) {
+    toast.error('Nothing to export');
+    return;
+  }
   const keys = Object.keys(rows[0]);
   const csv = [keys.join(','), ...rows.map((r) => keys.map((k) => JSON.stringify(r[k] ?? '')).join(','))].join('\n');
   const a = document.createElement('a');
