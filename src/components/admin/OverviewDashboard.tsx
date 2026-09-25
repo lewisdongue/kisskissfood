@@ -67,7 +67,7 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({ data, load
           <div className="space-y-4">
             <BarRow label="Active within 7 days" value={`${d?.retention7d ?? 0}%`} percentage={d?.retention7d ?? 0} />
             <BarRow label="Active within 30 days" value={`${d?.retention30d ?? 0}%`} percentage={d?.retention30d ?? 0} />
-            <div className="flex items-center justify-between rounded-lg bg-slate-800/60 px-3 py-2 text-sm">
+              <div className="admin-data-row flex items-center justify-between rounded-md border px-3 py-2 text-sm">
               <span className="text-slate-300">Users waiting to be matched</span>
               <span className="font-semibold text-slate-100">{formatNumber(d?.queueSize ?? 0)}</span>
             </div>

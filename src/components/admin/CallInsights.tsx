@@ -54,15 +54,15 @@ export const CallInsights: React.FC<Props> = ({ data, loading }) => (
 
       <AdminCard title="Talk time" description="Total minutes connected, last 7 days" icon={Users}>
         <div className="space-y-3">
-          <div className="flex items-center justify-between rounded-lg bg-slate-800/60 px-3 py-2 text-sm">
+          <div className="admin-data-row flex items-center justify-between rounded-md border px-3 py-2 text-sm">
             <span className="text-slate-300">Minutes talked</span>
             <span className="font-semibold text-slate-100">{formatNumber(data?.totalMinutes ?? 0)}</span>
           </div>
-          <div className="flex items-center justify-between rounded-lg bg-slate-800/60 px-3 py-2 text-sm">
+          <div className="admin-data-row flex items-center justify-between rounded-md border px-3 py-2 text-sm">
             <span className="text-slate-300">Calls in queue right now</span>
             <span className="font-semibold text-slate-100">{formatNumber(data?.queueSize ?? 0)}</span>
           </div>
-          <div className="flex items-center justify-between rounded-lg bg-slate-800/60 px-3 py-2 text-sm">
+          <div className="admin-data-row flex items-center justify-between rounded-md border px-3 py-2 text-sm">
             <span className="text-slate-300">Average call</span>
             <span className="font-semibold text-slate-100">{formatDuration(data?.avgSeconds ?? 0)}</span>
           </div>

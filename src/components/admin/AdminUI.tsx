@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { motion } from 'framer-motion';
 
 export const formatNumber = (num: number) => {
   if (!Number.isFinite(num)) return '0';
@@ -39,18 +40,20 @@ export const AdminCard: React.FC<{
   icon?: React.ComponentType<{ className?: string }>;
   children: React.ReactNode;
 }> = ({ title, description, icon: Icon, children }) => (
-  <Card className="w-full max-w-full overflow-hidden border border-slate-700/60 bg-slate-900/60 backdrop-blur-sm">
-    <CardHeader className="pb-3">
+  <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} whileHover={{ y: -2 }} transition={{ duration: 0.25 }}>
+  <Card className="admin-glass-card w-full max-w-full overflow-hidden border backdrop-blur-xl">
+    <CardHeader className="pb-3 sm:px-5">
       <CardTitle className="flex items-center gap-2 text-base text-slate-100">
-        {Icon ? <Icon className="h-4 w-4 shrink-0 text-blue-400" /> : null}
+        {Icon ? <Icon className="admin-accent-text h-4 w-4 shrink-0" /> : null}
         <span className="truncate">{title}</span>
       </CardTitle>
       {description ? (
         <CardDescription className="text-xs text-slate-400">{description}</CardDescription>
       ) : null}
     </CardHeader>
-    <CardContent className="w-full max-w-full overflow-x-auto">{children}</CardContent>
+    <CardContent className="w-full max-w-full overflow-x-auto sm:px-5">{children}</CardContent>
   </Card>
+  </motion.div>
 );
 
 export const StatCard: React.FC<{
@@ -60,20 +63,22 @@ export const StatCard: React.FC<{
   icon: React.ComponentType<{ className?: string }>;
   loading?: boolean;
 }> = ({ title, value, description, icon: Icon, loading }) => (
-  <Card className="w-full max-w-full overflow-hidden border border-slate-700/60 bg-slate-900/60 backdrop-blur-sm">
+  <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} whileHover={{ y: -3 }} transition={{ duration: 0.25 }} className="h-full">
+  <Card className="admin-stat-card h-full w-full max-w-full overflow-hidden border backdrop-blur-xl">
     <CardContent className="p-4">
       <div className="flex items-start justify-between gap-2">
         <span className="min-w-0 truncate text-xs font-medium uppercase tracking-wide text-slate-400">
           {title}
         </span>
-        <Icon className="h-4 w-4 shrink-0 text-blue-400" />
+         <span className="admin-stat-icon"><Icon className="h-4 w-4 shrink-0" /></span>
       </div>
-      <div className="mt-2 truncate text-2xl font-bold text-slate-50">
+       <div className="admin-metric-value mt-2 truncate text-2xl font-bold sm:text-3xl">
         {loading ? <span className="block h-7 w-20 animate-pulse rounded bg-slate-700" /> : value}
       </div>
       {description ? <p className="mt-1 truncate text-xs text-slate-500">{description}</p> : null}
     </CardContent>
   </Card>
+  </motion.div>
 );
 
 export const BarRow: React.FC<{ label: string; value: string; percentage: number }> = ({
@@ -86,9 +91,9 @@ export const BarRow: React.FC<{ label: string; value: string; percentage: number
       <span className="min-w-0 truncate text-slate-200">{label}</span>
       <span className="shrink-0 text-slate-400">{value}</span>
     </div>
-    <div className="h-2 w-full overflow-hidden rounded-full bg-slate-700/60">
+    <div className="admin-progress-track h-2 w-full overflow-hidden rounded-full">
       <div
-        className="h-full rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-500"
+        className="admin-progress-bar h-full rounded-full transition-all duration-500"
         style={{ width: `${Math.min(100, Math.max(0, percentage))}%` }}
       />
     </div>
@@ -107,7 +112,7 @@ export const Sparkline: React.FC<{ points: { label: string; value: number }[] }>
         <div
           key={p.label}
           title={`${p.label}: ${p.value}`}
-          className="min-w-0 flex-1 rounded-t bg-gradient-to-t from-blue-600/40 to-indigo-400"
+          className="admin-spark-bar min-w-0 flex-1 rounded-t"
           style={{ height: `${Math.max(3, (p.value / max) * 100)}%` }}
         />
       ))}
