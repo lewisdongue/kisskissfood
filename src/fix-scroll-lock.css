@@ -1,0 +1,19 @@
+/* Prevent scroll lock when Radix Select is open (shadcn/ui workaround) */
+body[style*="overflow: hidden"] {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+body[data-scroll-locked],
+body[data-scroll-locked][style*="overflow: hidden"],
+body[style*="overflow: hidden"][data-scroll-locked] {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* If RemoveScroll or other scroll lock is used as a wrapper, force allow scroll */
+[data-rs-scroll-locked],
+[data-scroll-locked] {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}

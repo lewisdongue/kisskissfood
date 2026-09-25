@@ -1,0 +1,426 @@
+// ============================================
+// Unified Service Worker
+// Combines Firebase Cloud Messaging + App Caching + Offline Support
+// ============================================
+
+// ---- Firebase Cloud Messaging ----
+// Import Firebase scripts for service worker
+importScripts('https://www.gstatic.com/firebasejs/12.4.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/12.4.0/firebase-messaging-compat.js');
+
+// Firebase config: taken from the registration query string (env-driven),
+// with build-time injected values as fallback.
+const swParams = new URL(self.location).searchParams;
+const injectedConfig = {
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
+};
+const firebaseConfig = {
+    apiKey: swParams.get('apiKey') || injectedConfig.apiKey,
+    authDomain: swParams.get('authDomain') || injectedConfig.authDomain,
+    projectId: swParams.get('projectId') || injectedConfig.projectId,
+    storageBucket: swParams.get('storageBucket') || injectedConfig.storageBucket,
+    messagingSenderId: swParams.get('messagingSenderId') || injectedConfig.messagingSenderId,
+    appId: swParams.get('appId') || injectedConfig.appId
+};
+
+// ---- App Service Worker Config ----
+const VERSION = '1.1.0';
+const BUILD_TIMESTAMP = '2026-03-12';
+const CACHE_NAME = `caakus-pwa-v26`;
+const VERSION_ID = `${VERSION}-${BUILD_TIMESTAMP}`;
+const OFFLINE_URL = '/offline.html';
+
+// Cache duration in milliseconds (5 minutes for dynamic content)
+const CACHE_MAX_AGE = 5 * 60 * 1000;
+
+// Resources to cache immediately on install
+const PRECACHE_URLS = [
+    '/offline.html',
+    '/logo.png',
+    '/logo_128.png',
+    '/manifest.json',
+];
+
+// ---- Initialize Firebase ----
+let messagingInstance = null;
+try {
+    if (!firebaseConfig.apiKey || !firebaseConfig.projectId || !firebaseConfig.appId) {
+        throw new Error('[SW] Firebase config incomplete - background messaging disabled');
+    }
+    firebase.initializeApp(firebaseConfig);
+    messagingInstance = firebase.messaging();
+
+    // Handle background messages (when app is not in focus)
+    messagingInstance.onBackgroundMessage((payload) => {
+        console.log('[SW] Received background message:', payload);
+
+        // Extract notification data
+        const notificationTitle = payload.notification?.title || payload.data?.title || 'New Notification';
+        const notificationBody = payload.notification?.body || payload.data?.message || '';
+
+        // Notification options
+        const notificationOptions = {
+            body: notificationBody,
+            icon: payload.notification?.icon || '/logo.png',
+            badge: '/logo.png',
+            tag: payload.data?.type || 'default',
+            requireInteraction: false,
+            data: {
+                url: payload.data?.url || payload.data?.app_url || '/',
+                notificationId: payload.data?.notificationId,
+                type: payload.data?.type,
+                ...payload.data
+            },
+            actions: []
+        };
+
+        // Add action buttons based on notification type
+        if (payload.data?.type === 'friend_request_received') {
+            notificationOptions.actions = [
+                { action: 'view', title: 'View Request' },
+                { action: 'dismiss', title: 'Dismiss' }
+            ];
+        } else if (payload.data?.type === 'yuyu_earned') {
+            notificationOptions.actions = [
+                { action: 'view', title: 'View Balance' },
+                { action: 'dismiss', title: 'Dismiss' }
+            ];
+        } else if (payload.data?.type === 're_engagement') {
+            notificationOptions.actions = [
+                { action: 'view', title: 'Open App' },
+                { action: 'dismiss', title: 'Dismiss' }
+            ];
+        } else if (payload.data?.type === 'referral_bonus') {
+            notificationOptions.actions = [
+                { action: 'view', title: 'View Referrals' },
+                { action: 'dismiss', title: 'Dismiss' }
+            ];
+        } else if (payload.data?.type === 'streak_at_risk') {
+            notificationOptions.actions = [
+                { action: 'view', title: 'Keep Streak' },
+                { action: 'dismiss', title: 'Dismiss' }
+            ];
+        }
+
+        // Show the notification
+        return self.registration.showNotification(notificationTitle, notificationOptions);
+    });
+
+    console.log('[SW] Firebase messaging initialized successfully');
+
+} catch (error) {
+    console.error('[SW] Error initializing Firebase:', error);
+}
+
+// ---- Service Worker Lifecycle ----
+
+// Install event - cache critical resources
+self.addEventListener('install', (event) => {
+    console.log('[SW] Install event - Version:', VERSION_ID);
+
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then((cache) => {
+                console.log('[SW] Caching app shell');
+                return cache.addAll(PRECACHE_URLS);
+            })
+            .catch((error) => {
+                console.error('[SW] Cache failed:', error);
+            })
+    );
+
+    // Do NOT call self.skipWaiting() here.
+    // Activating immediately causes a controllerchange event in the page,
+    // which triggers window.location.reload() and creates a reload loop.
+    // The page will call SKIP_WAITING via postMessage only when safe to do so.
+});
+
+// Activate event - clean up old caches
+self.addEventListener('activate', (event) => {
+    console.log('[SW] Activate event - Version:', VERSION_ID);
+
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (cacheName !== CACHE_NAME) {
+                        console.log('[SW] Removing old cache:', cacheName);
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
+
+    // Claim all clients immediately so this SW handles everything
+    return self.clients.claim();
+});
+
+// ---- Notification Click Handler (unified) ----
+self.addEventListener('notificationclick', (event) => {
+    console.log('[SW] Notification clicked:', event);
+
+    event.notification.close();
+
+    // Handle dismiss action
+    if (event.action === 'dismiss') {
+        return;
+    }
+
+    // Get the URL to open
+    const urlToOpen = event.notification.data?.url || event.notification.data?.app_url || '/';
+
+    // Open or focus the app
+    event.waitUntil(
+        clients.matchAll({ type: 'window', includeUncontrolled: true })
+            .then((clientList) => {
+                // Check if app is already open, try to navigate and focus
+                for (const client of clientList) {
+                    if ('focus' in client) {
+                        // Navigate the existing client to the target URL
+                        if (client.url.includes(self.location.origin)) {
+                            return client.navigate(urlToOpen).then((c) => c.focus());
+                        }
+                    }
+                }
+                // Open new window if app is not open
+                if (clients.openWindow) {
+                    return clients.openWindow(urlToOpen);
+                }
+            })
+    );
+});
+
+// ---- Push event handler (fallback for non-FCM pushes) ----
+self.addEventListener('push', (event) => {
+    // Firebase SDK handles FCM pushes via onBackgroundMessage.
+    // This handler is a safety net for Web Push payloads that arrive
+    // outside the Firebase SDK (e.g. direct VAPID pushes).
+    if (!event.data) return;
+
+    try {
+        const payload = event.data.json();
+        // Only handle if Firebase didn't already handle it
+        // Firebase payloads have 'from' field with sender ID
+        if (payload.from) {
+            // This is a Firebase message — let the SDK handle it
+            return;
+        }
+
+        const title = payload.notification?.title || payload.data?.title || 'Caakus';
+        const body = payload.notification?.body || payload.data?.body || '';
+
+        event.waitUntil(
+            self.registration.showNotification(title, {
+                body,
+                icon: '/logo.png',
+                badge: '/logo.png',
+                data: payload.data || {}
+            })
+        );
+    } catch (e) {
+        // Not JSON, try text
+        const text = event.data.text();
+        if (text) {
+            event.waitUntil(
+                self.registration.showNotification('Caakus', {
+                    body: text,
+                    icon: '/logo.png',
+                    badge: '/logo.png'
+                })
+            );
+        }
+    }
+});
+
+// ---- Fetch Handler - Network-first strategy ----
+self.addEventListener('fetch', (event) => {
+    const { request } = event;
+
+    // The Cache API only supports GET. Never intercept POST/PUT/DELETE, or
+    // cache.put() throws "Request method 'POST' is unsupported".
+    if (request.method !== 'GET') {
+        return;
+    }
+
+    // Skip cross-origin requests
+    if (!request.url.startsWith(self.location.origin)) {
+        return;
+    }
+
+    // Skip API calls and external resources - let them go direct to network
+    if (
+        request.url.includes('/api/') ||
+        request.url.includes('supabase') ||
+        request.url.includes('firebase') ||
+        request.url.includes('agora') ||
+        request.url.includes('nap5k.com') ||
+        request.url.includes('5gvci.com') ||
+        request.url.includes('googleapis.com')
+    ) {
+        return;
+    }
+
+    const isDocument = request.destination === 'document';
+    const isScript = request.destination === 'script';
+    const isStyle = request.destination === 'style';
+
+    // Hashed assets (e.g. /assets/vendor-Dl1qNv8A.js) are immutable —
+    // the browser HTTP cache handles them via far-future headers.
+    // Do NOT SW-cache them; stale SW copies cause blank-screen crashes
+    // when chunk names change between deployments.
+    const isHashedAsset = request.url.includes('/assets/');
+    if (isHashedAsset) {
+        return; // let the browser handle it natively
+    }
+
+    // NETWORK-FIRST for HTML documents to always get latest index.html
+    if (isDocument) {
+        event.respondWith(
+            fetch(request)
+                .then((response) => {
+                    if (response && response.status === 200) {
+                        const responseToCache = response.clone();
+                        caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(request, responseToCache);
+                        });
+                    }
+                    return response;
+                })
+                .catch(() => {
+                    return caches.match(request).then((cached) => {
+                        if (cached) return cached;
+                        return caches.match(OFFLINE_URL);
+                    });
+                })
+        );
+        return;
+    }
+
+    // Other same-origin scripts/styles (non-hashed): network-first
+    if (isScript || isStyle) {
+        event.respondWith(
+            fetch(request)
+                .then((response) => {
+                    if (response && response.status === 200) {
+                        const responseToCache = response.clone();
+                        caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(request, responseToCache);
+                        });
+                    }
+                    return response;
+                })
+                .catch(() => {
+                    return caches.match(request).then((cached) => {
+                        if (cached) return cached;
+                        return new Response('Network error occurred', {
+                            status: 408,
+                            headers: { 'Content-Type': 'text/plain' },
+                        });
+                    });
+                })
+        );
+        return;
+    }
+
+    // For images and other static assets: Cache-first with expiry check
+    event.respondWith(
+        caches.open(CACHE_NAME).then((cache) => {
+            return cache.match(request).then((cachedResponse) => {
+                if (cachedResponse) {
+                    const cachedDate = new Date(cachedResponse.headers.get('date') || 0);
+                    const now = new Date();
+                    const age = now.getTime() - cachedDate.getTime();
+
+                    if (age < CACHE_MAX_AGE) {
+                        return cachedResponse;
+                    }
+                }
+
+                return fetch(request)
+                    .then((response) => {
+                        if (response && response.status === 200 && response.type === 'basic') {
+                            const responseToCache = response.clone();
+                            cache.put(request, responseToCache);
+                        }
+                        return response;
+                    })
+                    .catch((error) => {
+                        console.error('[SW] Fetch failed:', error);
+                        if (cachedResponse) {
+                            return cachedResponse;
+                        }
+                        return new Response('Network error occurred', {
+                            status: 408,
+                            headers: { 'Content-Type': 'text/plain' },
+                        });
+                    });
+            });
+        })
+    );
+});
+
+// ---- Message Handler ----
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        console.log('[SW] Received SKIP_WAITING message - Version:', VERSION_ID);
+        self.skipWaiting();
+    }
+
+    if (event.data && event.data.type === 'CLEAR_CACHE') {
+        event.waitUntil(
+            caches.keys().then((cacheNames) => {
+                return Promise.all(
+                    cacheNames.map((cacheName) => {
+                        console.log('[SW] Clearing cache:', cacheName);
+                        return caches.delete(cacheName);
+                    })
+                );
+            }).then(() => {
+                console.log('[SW] All caches cleared');
+                self.clients.matchAll().then((clients) => {
+                    clients.forEach((client) => {
+                        client.postMessage({ type: 'CACHE_CLEARED' });
+                    });
+                });
+            })
+        );
+    }
+
+    if (event.data && event.data.type === 'GET_VERSION') {
+        event.ports[0].postMessage({
+            version: VERSION_ID,
+            versionNumber: VERSION,
+            buildTimestamp: BUILD_TIMESTAMP,
+            cacheName: CACHE_NAME
+        });
+    }
+});
+
+// ---- Background Sync ----
+self.addEventListener('sync', (event) => {
+    console.log('[SW] Background sync:', event.tag);
+
+    if (event.tag === 'sync-notifications') {
+        event.waitUntil(syncNotifications());
+    }
+
+    if (event.tag === 'sync-messages') {
+        event.waitUntil(syncMessages());
+    }
+});
+
+async function syncNotifications() {
+    console.log('[SW] Syncing notifications');
+}
+
+async function syncMessages() {
+    console.log('[SW] Syncing messages');
+}
+
+console.log('[SW] Unified service worker loaded - Version:', VERSION_ID);

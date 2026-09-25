@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caakus - You're Offline</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .icon {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+    }
+
+    .retry-btn {
+      padding: 1rem 3rem;
+      background: white;
+      color: #667eea;
+      border: none;
+      border-radius: 9999px;
+      font-size: 1.125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .retry-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .retry-btn:active {
+      transform: translateY(0);
+    }
+
+    .features {
+      margin-top: 3rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: left;
+    }
+
+    .features h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .features ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .features li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: start;
+      gap: 0.75rem;
+    }
+
+    .features li::before {
+      content: "✓";
+      font-weight: bold;
+      color: #4ade80;
+      font-size: 1.25rem;
+    }
+
+    .logo {
+      margin-bottom: 1rem;
+    }
+
+    .logo img {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .icon {
+        font-size: 4rem;
+      }
+
+      .retry-btn {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="/logo.png" alt="Caakus Logo">
+    </div>
+    
+    <div class="icon">📡</div>
+    
+    <h1>You're Offline</h1>
+    
+    <p>
+      Looks like you've lost your internet connection. 
+      Don't worry, we'll reconnect you as soon as you're back online!
+    </p>
+    
+    <button class="retry-btn" onclick="window.location.reload()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="23 4 23 10 17 10"></polyline>
+        <polyline points="1 20 1 14 7 14"></polyline>
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+      </svg>
+      Try Again
+    </button>
+
+    <div class="features">
+      <h2>What You Can Do Offline</h2>
+      <ul>
+        <li>View your profile and activity history</li>
+        <li>Check your YUYU balance and rewards</li>
+        <li>Browse your friend list</li>
+        <li>Review notification history</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Automatically retry when online
+    window.addEventListener('online', () => {
+      window.location.reload();
+    });
+
+    // Show connection status
+    function updateOnlineStatus() {
+      if (navigator.onLine) {
+        window.location.reload();
+      }
+    }
+
+    window.addEventListener('online', updateOnlineStatus);
+    
+    // Check connection every 3 seconds
+    setInterval(() => {
+      if (navigator.onLine) {
+        window.location.reload();
+      }
+    }, 3000);
+  </script>
+</body>
+</html>
+

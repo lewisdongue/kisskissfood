@@ -1,0 +1,70 @@
+// @ts-nocheck
+import { serve } from "https://deno.land/std@0.203.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+type AcceptChallengePayload = {
+  challengeId: string;
+};
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
+
+const json = (body: unknown, status = 200) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+
+const text = (body: string, status = 200) =>
+  new Response(body, { status, headers: corsHeaders });
+
+const getSupabase = () => {
+  const url = Deno.env.get("SUPABASE_URL")!;
+  const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+  return createClient(url, key, { auth: { persistSession: false } });
+};
+
+const requireAuth = async (req: Request) => {
+  const auth = req.headers.get("Authorization");
+  if (!auth?.startsWith("Bearer ")) throw new Error("Missing auth");
+  const token = auth.slice("Bearer ".length);
+  const sb = getSupabase();
+  const { data: { user }, error } = await sb.auth.getUser(token);
+  if (error || !user) throw new Error("Invalid token");
+  return user;
+};
+
+serve(async (req: Request) => {
+  if (req.method === "OPTIONS") {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  try {
+    if (req.method !== "POST") return text("Method Not Allowed", 405);
+
+    const user = await requireAuth(req);
+    const body = (await req.json()) as AcceptChallengePayload;
+    const challengeId = String(body?.challengeId || "");
+
+    if (!challengeId) {
+      return json({ error: "invalid_payload", message: "challengeId is required" }, 400);
+    }
+
+    const sb = getSupabase();
+    const { data, error } = await sb.rpc("accept_challenge", {
+      p_challenge_id: challengeId,
+      p_opponent_id: user.id,
+    });
+
+    if (error) {
+      return json({ error: error.message || "challenge_accept_failed" }, 400);
+    }
+
+    return json({ ok: true, ...data }, 200);
+  } catch (err: any) {
+    return json({ error: err?.message || "Internal Server Error" }, 500);
+  }
+});

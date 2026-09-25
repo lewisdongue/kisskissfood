@@ -10,33 +10,779 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AboutFounderRouteImport } from './routes/about-founder'
+import { Route as AnonymousWebcamChatRouteImport } from './routes/anonymous-webcam-chat'
+import { Route as AzarAlternativeRouteImport } from './routes/azar-alternative'
+import { Route as BrowserBasedVideoChatRouteImport } from './routes/browser-based-video-chat'
+import { Route as CallRouteImport } from './routes/call'
+import { Route as ChatRouteImport } from './routes/chat'
+import { Route as ChatrouletteAlternativeRouteImport } from './routes/chatroulette-alternative'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as ConnectionsRouteImport } from './routes/connections'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CoomeetAlternativeRouteImport } from './routes/coomeet-alternative'
+import { Route as EmbedVideoCallRouteImport } from './routes/embed-video-call'
+import { Route as FaceToFaceRandomChatRouteImport } from './routes/face-to-face-random-chat'
+import { Route as InstantLiveCamMatchRouteImport } from './routes/instant-live-cam-match'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as LevelSystemRouteImport } from './routes/level-system'
+import { Route as MakeMoneyOnlineRouteImport } from './routes/make-money-online'
+import { Route as MediaRouteImport } from './routes/media'
+import { Route as MeetNewPeopleRouteImport } from './routes/meet-new-people'
+import { Route as MonkeyAppAlternativeRouteImport } from './routes/monkey-app-alternative'
+import { Route as NathanRouteImport } from './routes/nathan'
+import { Route as NoSignupVideoMatchRouteImport } from './routes/no-signup-video-match'
+import { Route as OmegleAlternativeRouteImport } from './routes/omegle-alternative'
+import { Route as OmetvAlternativeRouteImport } from './routes/ometv-alternative'
+import { Route as PlanRouteImport } from './routes/plan'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as QuantumClickerRouteImport } from './routes/quantum-clicker'
+import { Route as RandomVideoChatRouteImport } from './routes/random-video-chat'
+import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
+import { Route as SafeChatWithStrangersRouteImport } from './routes/safe-chat-with-strangers'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SitemapCoreDotxmlRouteImport } from './routes/sitemap-core[.]xml'
+import { Route as SitemapIndexDotxmlRouteImport } from './routes/sitemap-index[.]xml'
+import { Route as SitemapProgrammaticDotxmlRouteImport } from './routes/sitemap-programmatic[.]xml'
+import { Route as SupportRouteImport } from './routes/support'
+import { Route as TalkToStrangersRouteImport } from './routes/talk-to-strangers'
+import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
+import { Route as TermsOfUseRouteImport } from './routes/terms-of-use'
+import { Route as VideoChatDatingRouteImport } from './routes/video-chat-dating'
+import { Route as VoiceRouteImport } from './routes/voice'
+import { Route as LangOmegleAlternativeRouteImport } from './routes/$lang.omegle-alternative'
+import { Route as ApiGreetingRouteImport } from './routes/api/greeting'
+import { Route as EmbedRoomRouteImport } from './routes/embed.$room'
+import { Route as GuidesEarningGuideRouteImport } from './routes/guides/earning-guide'
+import { Route as RankingsIndexRouteImport } from './routes/rankings.index'
+import { Route as RankingsLocationRouteImport } from './routes/rankings.$location'
+import { Route as SitemapsFileRouteImport } from './routes/sitemaps.$file'
+import { Route as ToolsIndexRouteImport } from './routes/tools.index'
+import { Route as ToolsSlugRouteImport } from './routes/tools.$slug'
+import { Route as VoiceIdRouteImport } from './routes/voice/$id'
+import { Route as ApiPublicBadgeDotsvgRouteImport } from './routes/api/public/badge[.]svg'
+import { Route as ApiPublicIndexingRouteImport } from './routes/api/public/indexing'
+import { Route as ApiPublicOgDotpngRouteImport } from './routes/api/public/og[.]png'
+import { Route as DirectoryLangPageRouteImport } from './routes/directory.$lang.$page'
+import { Route as LangDiscoverCategoryLocationRouteImport } from './routes/$lang.discover.$category.$location'
+import { Route as LangDiscoverHubSlugRouteImport } from './routes/$lang.discover.hub.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutFounderRoute = AboutFounderRouteImport.update({
+  id: '/about-founder',
+  path: '/about-founder',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnonymousWebcamChatRoute = AnonymousWebcamChatRouteImport.update({
+  id: '/anonymous-webcam-chat',
+  path: '/anonymous-webcam-chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AzarAlternativeRoute = AzarAlternativeRouteImport.update({
+  id: '/azar-alternative',
+  path: '/azar-alternative',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrowserBasedVideoChatRoute = BrowserBasedVideoChatRouteImport.update({
+  id: '/browser-based-video-chat',
+  path: '/browser-based-video-chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CallRoute = CallRouteImport.update({
+  id: '/call',
+  path: '/call',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatrouletteAlternativeRoute = ChatrouletteAlternativeRouteImport.update({
+  id: '/chatroulette-alternative',
+  path: '/chatroulette-alternative',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectionsRoute = ConnectionsRouteImport.update({
+  id: '/connections',
+  path: '/connections',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoomeetAlternativeRoute = CoomeetAlternativeRouteImport.update({
+  id: '/coomeet-alternative',
+  path: '/coomeet-alternative',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmbedVideoCallRoute = EmbedVideoCallRouteImport.update({
+  id: '/embed-video-call',
+  path: '/embed-video-call',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaceToFaceRandomChatRoute = FaceToFaceRandomChatRouteImport.update({
+  id: '/face-to-face-random-chat',
+  path: '/face-to-face-random-chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InstantLiveCamMatchRoute = InstantLiveCamMatchRouteImport.update({
+  id: '/instant-live-cam-match',
+  path: '/instant-live-cam-match',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LevelSystemRoute = LevelSystemRouteImport.update({
+  id: '/level-system',
+  path: '/level-system',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MakeMoneyOnlineRoute = MakeMoneyOnlineRouteImport.update({
+  id: '/make-money-online',
+  path: '/make-money-online',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaRoute = MediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeetNewPeopleRoute = MeetNewPeopleRouteImport.update({
+  id: '/meet-new-people',
+  path: '/meet-new-people',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MonkeyAppAlternativeRoute = MonkeyAppAlternativeRouteImport.update({
+  id: '/monkey-app-alternative',
+  path: '/monkey-app-alternative',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NathanRoute = NathanRouteImport.update({
+  id: '/nathan',
+  path: '/nathan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoSignupVideoMatchRoute = NoSignupVideoMatchRouteImport.update({
+  id: '/no-signup-video-match',
+  path: '/no-signup-video-match',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OmegleAlternativeRoute = OmegleAlternativeRouteImport.update({
+  id: '/omegle-alternative',
+  path: '/omegle-alternative',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OmetvAlternativeRoute = OmetvAlternativeRouteImport.update({
+  id: '/ometv-alternative',
+  path: '/ometv-alternative',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanRoute = PlanRouteImport.update({
+  id: '/plan',
+  path: '/plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuantumClickerRoute = QuantumClickerRouteImport.update({
+  id: '/quantum-clicker',
+  path: '/quantum-clicker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RandomVideoChatRoute = RandomVideoChatRouteImport.update({
+  id: '/random-video-chat',
+  path: '/random-video-chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundPolicyRoute = RefundPolicyRouteImport.update({
+  id: '/refund-policy',
+  path: '/refund-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SafeChatWithStrangersRoute = SafeChatWithStrangersRouteImport.update({
+  id: '/safe-chat-with-strangers',
+  path: '/safe-chat-with-strangers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapCoreDotxmlRoute = SitemapCoreDotxmlRouteImport.update({
+  id: '/sitemap-core.xml',
+  path: '/sitemap-core.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapIndexDotxmlRoute = SitemapIndexDotxmlRouteImport.update({
+  id: '/sitemap-index.xml',
+  path: '/sitemap-index.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapProgrammaticDotxmlRoute =
+  SitemapProgrammaticDotxmlRouteImport.update({
+    id: '/sitemap-programmatic.xml',
+    path: '/sitemap-programmatic.xml',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TalkToStrangersRoute = TalkToStrangersRouteImport.update({
+  id: '/talk-to-strangers',
+  path: '/talk-to-strangers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsOfUseRoute = TermsOfUseRouteImport.update({
+  id: '/terms-of-use',
+  path: '/terms-of-use',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VideoChatDatingRoute = VideoChatDatingRouteImport.update({
+  id: '/video-chat-dating',
+  path: '/video-chat-dating',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VoiceRoute = VoiceRouteImport.update({
+  id: '/voice',
+  path: '/voice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangOmegleAlternativeRoute = LangOmegleAlternativeRouteImport.update({
+  id: '/$lang/omegle-alternative',
+  path: '/$lang/omegle-alternative',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGreetingRoute = ApiGreetingRouteImport.update({
+  id: '/api/greeting',
+  path: '/api/greeting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmbedRoomRoute = EmbedRoomRouteImport.update({
+  id: '/embed/$room',
+  path: '/embed/$room',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesEarningGuideRoute = GuidesEarningGuideRouteImport.update({
+  id: '/guides/earning-guide',
+  path: '/guides/earning-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RankingsIndexRoute = RankingsIndexRouteImport.update({
+  id: '/rankings/',
+  path: '/rankings/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RankingsLocationRoute = RankingsLocationRouteImport.update({
+  id: '/rankings/$location',
+  path: '/rankings/$location',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapsFileRoute = SitemapsFileRouteImport.update({
+  id: '/sitemaps/$file',
+  path: '/sitemaps/$file',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsSlugRoute = ToolsSlugRouteImport.update({
+  id: '/tools/$slug',
+  path: '/tools/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VoiceIdRoute = VoiceIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => VoiceRoute,
+} as any)
+const ApiPublicBadgeDotsvgRoute = ApiPublicBadgeDotsvgRouteImport.update({
+  id: '/api/public/badge.svg',
+  path: '/api/public/badge.svg',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicIndexingRoute = ApiPublicIndexingRouteImport.update({
+  id: '/api/public/indexing',
+  path: '/api/public/indexing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicOgDotpngRoute = ApiPublicOgDotpngRouteImport.update({
+  id: '/api/public/og.png',
+  path: '/api/public/og.png',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DirectoryLangPageRoute = DirectoryLangPageRouteImport.update({
+  id: '/directory/$lang/$page',
+  path: '/directory/$lang/$page',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LangDiscoverCategoryLocationRoute =
+  LangDiscoverCategoryLocationRouteImport.update({
+    id: '/$lang/discover/$category/$location',
+    path: '/$lang/discover/$category/$location',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LangDiscoverHubSlugRoute = LangDiscoverHubSlugRouteImport.update({
+  id: '/$lang/discover/hub/$slug',
+  path: '/$lang/discover/hub/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/about-founder': typeof AboutFounderRoute
+  '/anonymous-webcam-chat': typeof AnonymousWebcamChatRoute
+  '/azar-alternative': typeof AzarAlternativeRoute
+  '/browser-based-video-chat': typeof BrowserBasedVideoChatRoute
+  '/call': typeof CallRoute
+  '/chat': typeof ChatRoute
+  '/chatroulette-alternative': typeof ChatrouletteAlternativeRoute
+  '/community': typeof CommunityRoute
+  '/connections': typeof ConnectionsRoute
+  '/contact': typeof ContactRoute
+  '/coomeet-alternative': typeof CoomeetAlternativeRoute
+  '/embed-video-call': typeof EmbedVideoCallRoute
+  '/face-to-face-random-chat': typeof FaceToFaceRandomChatRoute
+  '/instant-live-cam-match': typeof InstantLiveCamMatchRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/level-system': typeof LevelSystemRoute
+  '/make-money-online': typeof MakeMoneyOnlineRoute
+  '/media': typeof MediaRoute
+  '/meet-new-people': typeof MeetNewPeopleRoute
+  '/monkey-app-alternative': typeof MonkeyAppAlternativeRoute
+  '/nathan': typeof NathanRoute
+  '/no-signup-video-match': typeof NoSignupVideoMatchRoute
+  '/omegle-alternative': typeof OmegleAlternativeRoute
+  '/ometv-alternative': typeof OmetvAlternativeRoute
+  '/plan': typeof PlanRoute
+  '/privacy': typeof PrivacyRoute
+  '/quantum-clicker': typeof QuantumClickerRoute
+  '/random-video-chat': typeof RandomVideoChatRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/safe-chat-with-strangers': typeof SafeChatWithStrangersRoute
+  '/settings': typeof SettingsRoute
+  '/sitemap-core.xml': typeof SitemapCoreDotxmlRoute
+  '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
+  '/sitemap-programmatic.xml': typeof SitemapProgrammaticDotxmlRoute
+  '/support': typeof SupportRoute
+  '/talk-to-strangers': typeof TalkToStrangersRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/terms-of-use': typeof TermsOfUseRoute
+  '/video-chat-dating': typeof VideoChatDatingRoute
+  '/voice': typeof VoiceRouteWithChildren
+  '/$lang/omegle-alternative': typeof LangOmegleAlternativeRoute
+  '/api/greeting': typeof ApiGreetingRoute
+  '/embed/$room': typeof EmbedRoomRoute
+  '/guides/earning-guide': typeof GuidesEarningGuideRoute
+  '/rankings/$location': typeof RankingsLocationRoute
+  '/sitemaps/$file': typeof SitemapsFileRoute
+  '/tools/$slug': typeof ToolsSlugRoute
+  '/voice/$id': typeof VoiceIdRoute
+  '/rankings/': typeof RankingsIndexRoute
+  '/tools/': typeof ToolsIndexRoute
+  '/api/public/badge.svg': typeof ApiPublicBadgeDotsvgRoute
+  '/api/public/indexing': typeof ApiPublicIndexingRoute
+  '/api/public/og.png': typeof ApiPublicOgDotpngRoute
+  '/directory/$lang/$page': typeof DirectoryLangPageRoute
+  '/$lang/discover/$category/$location': typeof LangDiscoverCategoryLocationRoute
+  '/$lang/discover/hub/$slug': typeof LangDiscoverHubSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/about-founder': typeof AboutFounderRoute
+  '/anonymous-webcam-chat': typeof AnonymousWebcamChatRoute
+  '/azar-alternative': typeof AzarAlternativeRoute
+  '/browser-based-video-chat': typeof BrowserBasedVideoChatRoute
+  '/call': typeof CallRoute
+  '/chat': typeof ChatRoute
+  '/chatroulette-alternative': typeof ChatrouletteAlternativeRoute
+  '/community': typeof CommunityRoute
+  '/connections': typeof ConnectionsRoute
+  '/contact': typeof ContactRoute
+  '/coomeet-alternative': typeof CoomeetAlternativeRoute
+  '/embed-video-call': typeof EmbedVideoCallRoute
+  '/face-to-face-random-chat': typeof FaceToFaceRandomChatRoute
+  '/instant-live-cam-match': typeof InstantLiveCamMatchRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/level-system': typeof LevelSystemRoute
+  '/make-money-online': typeof MakeMoneyOnlineRoute
+  '/media': typeof MediaRoute
+  '/meet-new-people': typeof MeetNewPeopleRoute
+  '/monkey-app-alternative': typeof MonkeyAppAlternativeRoute
+  '/nathan': typeof NathanRoute
+  '/no-signup-video-match': typeof NoSignupVideoMatchRoute
+  '/omegle-alternative': typeof OmegleAlternativeRoute
+  '/ometv-alternative': typeof OmetvAlternativeRoute
+  '/plan': typeof PlanRoute
+  '/privacy': typeof PrivacyRoute
+  '/quantum-clicker': typeof QuantumClickerRoute
+  '/random-video-chat': typeof RandomVideoChatRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/safe-chat-with-strangers': typeof SafeChatWithStrangersRoute
+  '/settings': typeof SettingsRoute
+  '/sitemap-core.xml': typeof SitemapCoreDotxmlRoute
+  '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
+  '/sitemap-programmatic.xml': typeof SitemapProgrammaticDotxmlRoute
+  '/support': typeof SupportRoute
+  '/talk-to-strangers': typeof TalkToStrangersRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/terms-of-use': typeof TermsOfUseRoute
+  '/video-chat-dating': typeof VideoChatDatingRoute
+  '/voice': typeof VoiceRouteWithChildren
+  '/$lang/omegle-alternative': typeof LangOmegleAlternativeRoute
+  '/api/greeting': typeof ApiGreetingRoute
+  '/embed/$room': typeof EmbedRoomRoute
+  '/guides/earning-guide': typeof GuidesEarningGuideRoute
+  '/rankings/$location': typeof RankingsLocationRoute
+  '/sitemaps/$file': typeof SitemapsFileRoute
+  '/tools/$slug': typeof ToolsSlugRoute
+  '/voice/$id': typeof VoiceIdRoute
+  '/rankings': typeof RankingsIndexRoute
+  '/tools': typeof ToolsIndexRoute
+  '/api/public/badge.svg': typeof ApiPublicBadgeDotsvgRoute
+  '/api/public/indexing': typeof ApiPublicIndexingRoute
+  '/api/public/og.png': typeof ApiPublicOgDotpngRoute
+  '/directory/$lang/$page': typeof DirectoryLangPageRoute
+  '/$lang/discover/$category/$location': typeof LangDiscoverCategoryLocationRoute
+  '/$lang/discover/hub/$slug': typeof LangDiscoverHubSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/about-founder': typeof AboutFounderRoute
+  '/anonymous-webcam-chat': typeof AnonymousWebcamChatRoute
+  '/azar-alternative': typeof AzarAlternativeRoute
+  '/browser-based-video-chat': typeof BrowserBasedVideoChatRoute
+  '/call': typeof CallRoute
+  '/chat': typeof ChatRoute
+  '/chatroulette-alternative': typeof ChatrouletteAlternativeRoute
+  '/community': typeof CommunityRoute
+  '/connections': typeof ConnectionsRoute
+  '/contact': typeof ContactRoute
+  '/coomeet-alternative': typeof CoomeetAlternativeRoute
+  '/embed-video-call': typeof EmbedVideoCallRoute
+  '/face-to-face-random-chat': typeof FaceToFaceRandomChatRoute
+  '/instant-live-cam-match': typeof InstantLiveCamMatchRoute
+  '/leaderboard': typeof LeaderboardRoute
+  '/level-system': typeof LevelSystemRoute
+  '/make-money-online': typeof MakeMoneyOnlineRoute
+  '/media': typeof MediaRoute
+  '/meet-new-people': typeof MeetNewPeopleRoute
+  '/monkey-app-alternative': typeof MonkeyAppAlternativeRoute
+  '/nathan': typeof NathanRoute
+  '/no-signup-video-match': typeof NoSignupVideoMatchRoute
+  '/omegle-alternative': typeof OmegleAlternativeRoute
+  '/ometv-alternative': typeof OmetvAlternativeRoute
+  '/plan': typeof PlanRoute
+  '/privacy': typeof PrivacyRoute
+  '/quantum-clicker': typeof QuantumClickerRoute
+  '/random-video-chat': typeof RandomVideoChatRoute
+  '/refund-policy': typeof RefundPolicyRoute
+  '/safe-chat-with-strangers': typeof SafeChatWithStrangersRoute
+  '/settings': typeof SettingsRoute
+  '/sitemap-core.xml': typeof SitemapCoreDotxmlRoute
+  '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
+  '/sitemap-programmatic.xml': typeof SitemapProgrammaticDotxmlRoute
+  '/support': typeof SupportRoute
+  '/talk-to-strangers': typeof TalkToStrangersRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/terms-of-use': typeof TermsOfUseRoute
+  '/video-chat-dating': typeof VideoChatDatingRoute
+  '/voice': typeof VoiceRouteWithChildren
+  '/$lang/omegle-alternative': typeof LangOmegleAlternativeRoute
+  '/api/greeting': typeof ApiGreetingRoute
+  '/embed/$room': typeof EmbedRoomRoute
+  '/guides/earning-guide': typeof GuidesEarningGuideRoute
+  '/rankings/$location': typeof RankingsLocationRoute
+  '/sitemaps/$file': typeof SitemapsFileRoute
+  '/tools/$slug': typeof ToolsSlugRoute
+  '/voice/$id': typeof VoiceIdRoute
+  '/rankings/': typeof RankingsIndexRoute
+  '/tools/': typeof ToolsIndexRoute
+  '/api/public/badge.svg': typeof ApiPublicBadgeDotsvgRoute
+  '/api/public/indexing': typeof ApiPublicIndexingRoute
+  '/api/public/og.png': typeof ApiPublicOgDotpngRoute
+  '/directory/$lang/$page': typeof DirectoryLangPageRoute
+  '/$lang/discover/$category/$location': typeof LangDiscoverCategoryLocationRoute
+  '/$lang/discover/hub/$slug': typeof LangDiscoverHubSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/about-founder'
+    | '/anonymous-webcam-chat'
+    | '/azar-alternative'
+    | '/browser-based-video-chat'
+    | '/call'
+    | '/chat'
+    | '/chatroulette-alternative'
+    | '/community'
+    | '/connections'
+    | '/contact'
+    | '/coomeet-alternative'
+    | '/embed-video-call'
+    | '/face-to-face-random-chat'
+    | '/instant-live-cam-match'
+    | '/leaderboard'
+    | '/level-system'
+    | '/make-money-online'
+    | '/media'
+    | '/meet-new-people'
+    | '/monkey-app-alternative'
+    | '/nathan'
+    | '/no-signup-video-match'
+    | '/omegle-alternative'
+    | '/ometv-alternative'
+    | '/plan'
+    | '/privacy'
+    | '/quantum-clicker'
+    | '/random-video-chat'
+    | '/refund-policy'
+    | '/safe-chat-with-strangers'
+    | '/settings'
+    | '/sitemap-core.xml'
+    | '/sitemap-index.xml'
+    | '/sitemap-programmatic.xml'
+    | '/support'
+    | '/talk-to-strangers'
+    | '/terms-of-service'
+    | '/terms-of-use'
+    | '/video-chat-dating'
+    | '/voice'
+    | '/$lang/omegle-alternative'
+    | '/api/greeting'
+    | '/embed/$room'
+    | '/guides/earning-guide'
+    | '/rankings/$location'
+    | '/sitemaps/$file'
+    | '/tools/$slug'
+    | '/voice/$id'
+    | '/rankings/'
+    | '/tools/'
+    | '/api/public/badge.svg'
+    | '/api/public/indexing'
+    | '/api/public/og.png'
+    | '/directory/$lang/$page'
+    | '/$lang/discover/$category/$location'
+    | '/$lang/discover/hub/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/about-founder'
+    | '/anonymous-webcam-chat'
+    | '/azar-alternative'
+    | '/browser-based-video-chat'
+    | '/call'
+    | '/chat'
+    | '/chatroulette-alternative'
+    | '/community'
+    | '/connections'
+    | '/contact'
+    | '/coomeet-alternative'
+    | '/embed-video-call'
+    | '/face-to-face-random-chat'
+    | '/instant-live-cam-match'
+    | '/leaderboard'
+    | '/level-system'
+    | '/make-money-online'
+    | '/media'
+    | '/meet-new-people'
+    | '/monkey-app-alternative'
+    | '/nathan'
+    | '/no-signup-video-match'
+    | '/omegle-alternative'
+    | '/ometv-alternative'
+    | '/plan'
+    | '/privacy'
+    | '/quantum-clicker'
+    | '/random-video-chat'
+    | '/refund-policy'
+    | '/safe-chat-with-strangers'
+    | '/settings'
+    | '/sitemap-core.xml'
+    | '/sitemap-index.xml'
+    | '/sitemap-programmatic.xml'
+    | '/support'
+    | '/talk-to-strangers'
+    | '/terms-of-service'
+    | '/terms-of-use'
+    | '/video-chat-dating'
+    | '/voice'
+    | '/$lang/omegle-alternative'
+    | '/api/greeting'
+    | '/embed/$room'
+    | '/guides/earning-guide'
+    | '/rankings/$location'
+    | '/sitemaps/$file'
+    | '/tools/$slug'
+    | '/voice/$id'
+    | '/rankings'
+    | '/tools'
+    | '/api/public/badge.svg'
+    | '/api/public/indexing'
+    | '/api/public/og.png'
+    | '/directory/$lang/$page'
+    | '/$lang/discover/$category/$location'
+    | '/$lang/discover/hub/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/about-founder'
+    | '/anonymous-webcam-chat'
+    | '/azar-alternative'
+    | '/browser-based-video-chat'
+    | '/call'
+    | '/chat'
+    | '/chatroulette-alternative'
+    | '/community'
+    | '/connections'
+    | '/contact'
+    | '/coomeet-alternative'
+    | '/embed-video-call'
+    | '/face-to-face-random-chat'
+    | '/instant-live-cam-match'
+    | '/leaderboard'
+    | '/level-system'
+    | '/make-money-online'
+    | '/media'
+    | '/meet-new-people'
+    | '/monkey-app-alternative'
+    | '/nathan'
+    | '/no-signup-video-match'
+    | '/omegle-alternative'
+    | '/ometv-alternative'
+    | '/plan'
+    | '/privacy'
+    | '/quantum-clicker'
+    | '/random-video-chat'
+    | '/refund-policy'
+    | '/safe-chat-with-strangers'
+    | '/settings'
+    | '/sitemap-core.xml'
+    | '/sitemap-index.xml'
+    | '/sitemap-programmatic.xml'
+    | '/support'
+    | '/talk-to-strangers'
+    | '/terms-of-service'
+    | '/terms-of-use'
+    | '/video-chat-dating'
+    | '/voice'
+    | '/$lang/omegle-alternative'
+    | '/api/greeting'
+    | '/embed/$room'
+    | '/guides/earning-guide'
+    | '/rankings/$location'
+    | '/sitemaps/$file'
+    | '/tools/$slug'
+    | '/voice/$id'
+    | '/rankings/'
+    | '/tools/'
+    | '/api/public/badge.svg'
+    | '/api/public/indexing'
+    | '/api/public/og.png'
+    | '/directory/$lang/$page'
+    | '/$lang/discover/$category/$location'
+    | '/$lang/discover/hub/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AboutFounderRoute: typeof AboutFounderRoute
+  AnonymousWebcamChatRoute: typeof AnonymousWebcamChatRoute
+  AzarAlternativeRoute: typeof AzarAlternativeRoute
+  BrowserBasedVideoChatRoute: typeof BrowserBasedVideoChatRoute
+  CallRoute: typeof CallRoute
+  ChatRoute: typeof ChatRoute
+  ChatrouletteAlternativeRoute: typeof ChatrouletteAlternativeRoute
+  CommunityRoute: typeof CommunityRoute
+  ConnectionsRoute: typeof ConnectionsRoute
+  ContactRoute: typeof ContactRoute
+  CoomeetAlternativeRoute: typeof CoomeetAlternativeRoute
+  EmbedVideoCallRoute: typeof EmbedVideoCallRoute
+  FaceToFaceRandomChatRoute: typeof FaceToFaceRandomChatRoute
+  InstantLiveCamMatchRoute: typeof InstantLiveCamMatchRoute
+  LeaderboardRoute: typeof LeaderboardRoute
+  LevelSystemRoute: typeof LevelSystemRoute
+  MakeMoneyOnlineRoute: typeof MakeMoneyOnlineRoute
+  MediaRoute: typeof MediaRoute
+  MeetNewPeopleRoute: typeof MeetNewPeopleRoute
+  MonkeyAppAlternativeRoute: typeof MonkeyAppAlternativeRoute
+  NathanRoute: typeof NathanRoute
+  NoSignupVideoMatchRoute: typeof NoSignupVideoMatchRoute
+  OmegleAlternativeRoute: typeof OmegleAlternativeRoute
+  OmetvAlternativeRoute: typeof OmetvAlternativeRoute
+  PlanRoute: typeof PlanRoute
+  PrivacyRoute: typeof PrivacyRoute
+  QuantumClickerRoute: typeof QuantumClickerRoute
+  RandomVideoChatRoute: typeof RandomVideoChatRoute
+  RefundPolicyRoute: typeof RefundPolicyRoute
+  SafeChatWithStrangersRoute: typeof SafeChatWithStrangersRoute
+  SettingsRoute: typeof SettingsRoute
+  SitemapCoreDotxmlRoute: typeof SitemapCoreDotxmlRoute
+  SitemapIndexDotxmlRoute: typeof SitemapIndexDotxmlRoute
+  SitemapProgrammaticDotxmlRoute: typeof SitemapProgrammaticDotxmlRoute
+  SupportRoute: typeof SupportRoute
+  TalkToStrangersRoute: typeof TalkToStrangersRoute
+  TermsOfServiceRoute: typeof TermsOfServiceRoute
+  TermsOfUseRoute: typeof TermsOfUseRoute
+  VideoChatDatingRoute: typeof VideoChatDatingRoute
+  VoiceRoute: typeof VoiceRouteWithChildren
+  LangOmegleAlternativeRoute: typeof LangOmegleAlternativeRoute
+  ApiGreetingRoute: typeof ApiGreetingRoute
+  EmbedRoomRoute: typeof EmbedRoomRoute
+  GuidesEarningGuideRoute: typeof GuidesEarningGuideRoute
+  RankingsLocationRoute: typeof RankingsLocationRoute
+  SitemapsFileRoute: typeof SitemapsFileRoute
+  ToolsSlugRoute: typeof ToolsSlugRoute
+  RankingsIndexRoute: typeof RankingsIndexRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
+  ApiPublicBadgeDotsvgRoute: typeof ApiPublicBadgeDotsvgRoute
+  ApiPublicIndexingRoute: typeof ApiPublicIndexingRoute
+  ApiPublicOgDotpngRoute: typeof ApiPublicOgDotpngRoute
+  DirectoryLangPageRoute: typeof DirectoryLangPageRoute
+  LangDiscoverCategoryLocationRoute: typeof LangDiscoverCategoryLocationRoute
+  LangDiscoverHubSlugRoute: typeof LangDiscoverHubSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +794,476 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-founder': {
+      id: '/about-founder'
+      path: '/about-founder'
+      fullPath: '/about-founder'
+      preLoaderRoute: typeof AboutFounderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/anonymous-webcam-chat': {
+      id: '/anonymous-webcam-chat'
+      path: '/anonymous-webcam-chat'
+      fullPath: '/anonymous-webcam-chat'
+      preLoaderRoute: typeof AnonymousWebcamChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/azar-alternative': {
+      id: '/azar-alternative'
+      path: '/azar-alternative'
+      fullPath: '/azar-alternative'
+      preLoaderRoute: typeof AzarAlternativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/browser-based-video-chat': {
+      id: '/browser-based-video-chat'
+      path: '/browser-based-video-chat'
+      fullPath: '/browser-based-video-chat'
+      preLoaderRoute: typeof BrowserBasedVideoChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/call': {
+      id: '/call'
+      path: '/call'
+      fullPath: '/call'
+      preLoaderRoute: typeof CallRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chatroulette-alternative': {
+      id: '/chatroulette-alternative'
+      path: '/chatroulette-alternative'
+      fullPath: '/chatroulette-alternative'
+      preLoaderRoute: typeof ChatrouletteAlternativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connections': {
+      id: '/connections'
+      path: '/connections'
+      fullPath: '/connections'
+      preLoaderRoute: typeof ConnectionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coomeet-alternative': {
+      id: '/coomeet-alternative'
+      path: '/coomeet-alternative'
+      fullPath: '/coomeet-alternative'
+      preLoaderRoute: typeof CoomeetAlternativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/embed-video-call': {
+      id: '/embed-video-call'
+      path: '/embed-video-call'
+      fullPath: '/embed-video-call'
+      preLoaderRoute: typeof EmbedVideoCallRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/face-to-face-random-chat': {
+      id: '/face-to-face-random-chat'
+      path: '/face-to-face-random-chat'
+      fullPath: '/face-to-face-random-chat'
+      preLoaderRoute: typeof FaceToFaceRandomChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/instant-live-cam-match': {
+      id: '/instant-live-cam-match'
+      path: '/instant-live-cam-match'
+      fullPath: '/instant-live-cam-match'
+      preLoaderRoute: typeof InstantLiveCamMatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/level-system': {
+      id: '/level-system'
+      path: '/level-system'
+      fullPath: '/level-system'
+      preLoaderRoute: typeof LevelSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/make-money-online': {
+      id: '/make-money-online'
+      path: '/make-money-online'
+      fullPath: '/make-money-online'
+      preLoaderRoute: typeof MakeMoneyOnlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media': {
+      id: '/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof MediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meet-new-people': {
+      id: '/meet-new-people'
+      path: '/meet-new-people'
+      fullPath: '/meet-new-people'
+      preLoaderRoute: typeof MeetNewPeopleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/monkey-app-alternative': {
+      id: '/monkey-app-alternative'
+      path: '/monkey-app-alternative'
+      fullPath: '/monkey-app-alternative'
+      preLoaderRoute: typeof MonkeyAppAlternativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nathan': {
+      id: '/nathan'
+      path: '/nathan'
+      fullPath: '/nathan'
+      preLoaderRoute: typeof NathanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/no-signup-video-match': {
+      id: '/no-signup-video-match'
+      path: '/no-signup-video-match'
+      fullPath: '/no-signup-video-match'
+      preLoaderRoute: typeof NoSignupVideoMatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/omegle-alternative': {
+      id: '/omegle-alternative'
+      path: '/omegle-alternative'
+      fullPath: '/omegle-alternative'
+      preLoaderRoute: typeof OmegleAlternativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ometv-alternative': {
+      id: '/ometv-alternative'
+      path: '/ometv-alternative'
+      fullPath: '/ometv-alternative'
+      preLoaderRoute: typeof OmetvAlternativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plan': {
+      id: '/plan'
+      path: '/plan'
+      fullPath: '/plan'
+      preLoaderRoute: typeof PlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quantum-clicker': {
+      id: '/quantum-clicker'
+      path: '/quantum-clicker'
+      fullPath: '/quantum-clicker'
+      preLoaderRoute: typeof QuantumClickerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/random-video-chat': {
+      id: '/random-video-chat'
+      path: '/random-video-chat'
+      fullPath: '/random-video-chat'
+      preLoaderRoute: typeof RandomVideoChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refund-policy': {
+      id: '/refund-policy'
+      path: '/refund-policy'
+      fullPath: '/refund-policy'
+      preLoaderRoute: typeof RefundPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/safe-chat-with-strangers': {
+      id: '/safe-chat-with-strangers'
+      path: '/safe-chat-with-strangers'
+      fullPath: '/safe-chat-with-strangers'
+      preLoaderRoute: typeof SafeChatWithStrangersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap-core.xml': {
+      id: '/sitemap-core.xml'
+      path: '/sitemap-core.xml'
+      fullPath: '/sitemap-core.xml'
+      preLoaderRoute: typeof SitemapCoreDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap-index.xml': {
+      id: '/sitemap-index.xml'
+      path: '/sitemap-index.xml'
+      fullPath: '/sitemap-index.xml'
+      preLoaderRoute: typeof SitemapIndexDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap-programmatic.xml': {
+      id: '/sitemap-programmatic.xml'
+      path: '/sitemap-programmatic.xml'
+      fullPath: '/sitemap-programmatic.xml'
+      preLoaderRoute: typeof SitemapProgrammaticDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/talk-to-strangers': {
+      id: '/talk-to-strangers'
+      path: '/talk-to-strangers'
+      fullPath: '/talk-to-strangers'
+      preLoaderRoute: typeof TalkToStrangersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-of-service': {
+      id: '/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof TermsOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-of-use': {
+      id: '/terms-of-use'
+      path: '/terms-of-use'
+      fullPath: '/terms-of-use'
+      preLoaderRoute: typeof TermsOfUseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/video-chat-dating': {
+      id: '/video-chat-dating'
+      path: '/video-chat-dating'
+      fullPath: '/video-chat-dating'
+      preLoaderRoute: typeof VideoChatDatingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/voice': {
+      id: '/voice'
+      path: '/voice'
+      fullPath: '/voice'
+      preLoaderRoute: typeof VoiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/omegle-alternative': {
+      id: '/$lang/omegle-alternative'
+      path: '/$lang/omegle-alternative'
+      fullPath: '/$lang/omegle-alternative'
+      preLoaderRoute: typeof LangOmegleAlternativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/greeting': {
+      id: '/api/greeting'
+      path: '/api/greeting'
+      fullPath: '/api/greeting'
+      preLoaderRoute: typeof ApiGreetingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/embed/$room': {
+      id: '/embed/$room'
+      path: '/embed/$room'
+      fullPath: '/embed/$room'
+      preLoaderRoute: typeof EmbedRoomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/earning-guide': {
+      id: '/guides/earning-guide'
+      path: '/guides/earning-guide'
+      fullPath: '/guides/earning-guide'
+      preLoaderRoute: typeof GuidesEarningGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rankings/': {
+      id: '/rankings/'
+      path: '/rankings'
+      fullPath: '/rankings/'
+      preLoaderRoute: typeof RankingsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rankings/$location': {
+      id: '/rankings/$location'
+      path: '/rankings/$location'
+      fullPath: '/rankings/$location'
+      preLoaderRoute: typeof RankingsLocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemaps/$file': {
+      id: '/sitemaps/$file'
+      path: '/sitemaps/$file'
+      fullPath: '/sitemaps/$file'
+      preLoaderRoute: typeof SitemapsFileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/$slug': {
+      id: '/tools/$slug'
+      path: '/tools/$slug'
+      fullPath: '/tools/$slug'
+      preLoaderRoute: typeof ToolsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/voice/$id': {
+      id: '/voice/$id'
+      path: '/$id'
+      fullPath: '/voice/$id'
+      preLoaderRoute: typeof VoiceIdRouteImport
+      parentRoute: typeof VoiceRoute
+    }
+    '/api/public/badge.svg': {
+      id: '/api/public/badge.svg'
+      path: '/api/public/badge.svg'
+      fullPath: '/api/public/badge.svg'
+      preLoaderRoute: typeof ApiPublicBadgeDotsvgRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/indexing': {
+      id: '/api/public/indexing'
+      path: '/api/public/indexing'
+      fullPath: '/api/public/indexing'
+      preLoaderRoute: typeof ApiPublicIndexingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/og.png': {
+      id: '/api/public/og.png'
+      path: '/api/public/og.png'
+      fullPath: '/api/public/og.png'
+      preLoaderRoute: typeof ApiPublicOgDotpngRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/directory/$lang/$page': {
+      id: '/directory/$lang/$page'
+      path: '/directory/$lang/$page'
+      fullPath: '/directory/$lang/$page'
+      preLoaderRoute: typeof DirectoryLangPageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/discover/$category/$location': {
+      id: '/$lang/discover/$category/$location'
+      path: '/$lang/discover/$category/$location'
+      fullPath: '/$lang/discover/$category/$location'
+      preLoaderRoute: typeof LangDiscoverCategoryLocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$lang/discover/hub/$slug': {
+      id: '/$lang/discover/hub/$slug'
+      path: '/$lang/discover/hub/$slug'
+      fullPath: '/$lang/discover/hub/$slug'
+      preLoaderRoute: typeof LangDiscoverHubSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface VoiceRouteChildren {
+  VoiceIdRoute: typeof VoiceIdRoute
+}
+
+const VoiceRouteChildren: VoiceRouteChildren = {
+  VoiceIdRoute: VoiceIdRoute,
+}
+
+const VoiceRouteWithChildren = VoiceRoute._addFileChildren(VoiceRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AboutFounderRoute: AboutFounderRoute,
+  AnonymousWebcamChatRoute: AnonymousWebcamChatRoute,
+  AzarAlternativeRoute: AzarAlternativeRoute,
+  BrowserBasedVideoChatRoute: BrowserBasedVideoChatRoute,
+  CallRoute: CallRoute,
+  ChatRoute: ChatRoute,
+  ChatrouletteAlternativeRoute: ChatrouletteAlternativeRoute,
+  CommunityRoute: CommunityRoute,
+  ConnectionsRoute: ConnectionsRoute,
+  ContactRoute: ContactRoute,
+  CoomeetAlternativeRoute: CoomeetAlternativeRoute,
+  EmbedVideoCallRoute: EmbedVideoCallRoute,
+  FaceToFaceRandomChatRoute: FaceToFaceRandomChatRoute,
+  InstantLiveCamMatchRoute: InstantLiveCamMatchRoute,
+  LeaderboardRoute: LeaderboardRoute,
+  LevelSystemRoute: LevelSystemRoute,
+  MakeMoneyOnlineRoute: MakeMoneyOnlineRoute,
+  MediaRoute: MediaRoute,
+  MeetNewPeopleRoute: MeetNewPeopleRoute,
+  MonkeyAppAlternativeRoute: MonkeyAppAlternativeRoute,
+  NathanRoute: NathanRoute,
+  NoSignupVideoMatchRoute: NoSignupVideoMatchRoute,
+  OmegleAlternativeRoute: OmegleAlternativeRoute,
+  OmetvAlternativeRoute: OmetvAlternativeRoute,
+  PlanRoute: PlanRoute,
+  PrivacyRoute: PrivacyRoute,
+  QuantumClickerRoute: QuantumClickerRoute,
+  RandomVideoChatRoute: RandomVideoChatRoute,
+  RefundPolicyRoute: RefundPolicyRoute,
+  SafeChatWithStrangersRoute: SafeChatWithStrangersRoute,
+  SettingsRoute: SettingsRoute,
+  SitemapCoreDotxmlRoute: SitemapCoreDotxmlRoute,
+  SitemapIndexDotxmlRoute: SitemapIndexDotxmlRoute,
+  SitemapProgrammaticDotxmlRoute: SitemapProgrammaticDotxmlRoute,
+  SupportRoute: SupportRoute,
+  TalkToStrangersRoute: TalkToStrangersRoute,
+  TermsOfServiceRoute: TermsOfServiceRoute,
+  TermsOfUseRoute: TermsOfUseRoute,
+  VideoChatDatingRoute: VideoChatDatingRoute,
+  VoiceRoute: VoiceRouteWithChildren,
+  LangOmegleAlternativeRoute: LangOmegleAlternativeRoute,
+  ApiGreetingRoute: ApiGreetingRoute,
+  EmbedRoomRoute: EmbedRoomRoute,
+  GuidesEarningGuideRoute: GuidesEarningGuideRoute,
+  RankingsLocationRoute: RankingsLocationRoute,
+  SitemapsFileRoute: SitemapsFileRoute,
+  ToolsSlugRoute: ToolsSlugRoute,
+  RankingsIndexRoute: RankingsIndexRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
+  ApiPublicBadgeDotsvgRoute: ApiPublicBadgeDotsvgRoute,
+  ApiPublicIndexingRoute: ApiPublicIndexingRoute,
+  ApiPublicOgDotpngRoute: ApiPublicOgDotpngRoute,
+  DirectoryLangPageRoute: DirectoryLangPageRoute,
+  LangDiscoverCategoryLocationRoute: LangDiscoverCategoryLocationRoute,
+  LangDiscoverHubSlugRoute: LangDiscoverHubSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

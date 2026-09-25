@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.update_yuyu_price() FROM PUBLIC, anon, authenticated;

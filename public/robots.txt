@@ -1,14 +1,112 @@
-User-agent: Googlebot
-Allow: /
+# =======================================================================
+#  ██████╗  █████╗  █████╗ ██╗  ██╗██╗   ██╗███████╗
+# ██╔════╝ ██╔══██╗██╔══██╗██║ ██╔╝██║   ██║██╔════╝
+# ██║      ███████║███████║█████╔╝ ██║   ██║███████╗
+# ██║      ██╔══██║██╔══██║██╔═██╗ ██║   ██║╚════██║
+# ╚██████╗ ██║  ██║██║  ██║██║  ██╗╚██████╔╝███████║
+#  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝
+# 
+# CAAKUS INFRASTRUCTURE ROBOTS.TXT — ULTIMATE MASTER DIRECTIVE
+# Engineered for massive PWA Social Discovery & AI Engine Domination.
+# =======================================================================
 
-User-agent: Bingbot
-Allow: /
+# -----------------------------------------------------------------------
+# 1. 🛑 AGGRESSIVE SCRAPERS & THREAT MITIGATION (Bandwidth Preservation)
+# -----------------------------------------------------------------------
+User-agent: Baiduspider
+User-agent: YandexBot
+User-agent: MJ12bot
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+User-agent: MegaIndex.ru
+User-agent: PetalBot
+User-agent: BLEXBot
+User-agent: Bytespider
+Disallow: /
 
-User-agent: Twitterbot
-Allow: /
+# -----------------------------------------------------------------------
+# 2. 🤖 AI & LLM ENGINES (VIP Access for Generative Search Optimization)
+# -----------------------------------------------------------------------
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: cohere-ai
+User-agent: Meta-ExternalAgent
+User-agent: YouBot
+User-agent: Amazonbot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
 
-User-agent: facebookexternalhit
-Allow: /
+# Direct access to machine-readable metadata and brand authority
+Allow: /llms.txt
+Allow: /sitemap.xml
 
+# Strict isolation of backend logic, user sessions, and WebRTC streaming corridors
+Disallow: /call
+Disallow: /call/*
+Disallow: /chat
+Disallow: /chat/*
+Disallow: /api/
+Disallow: /auth/
+Disallow: /connections
+Disallow: /nathan
+Disallow: /level-system
+Disallow: /internal/
+Disallow: /admin/
+Disallow: /settings/
+
+# Prevent indexing of dynamic transaction parameters & tokens
+Disallow: /*?token=
+Disallow: /*?session_id=
+Disallow: /*?payment_intent=
+Disallow: /*?checkout_id=
+Disallow: /*?ref=
+Disallow: /*?utm_
+
+# -----------------------------------------------------------------------
+# 3. 🌍 STANDARD CRAWLERS & GENERAL BROWSING (Googlebot, Bingbot, etc.)
+# -----------------------------------------------------------------------
 User-agent: *
-Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+# Absolute protection of core application corridors for general crawlers too
+Disallow: /call
+Disallow: /call/*
+Disallow: /chat
+Disallow: /chat/*
+Disallow: /auth/
+Disallow: /connections
+Disallow: /nathan
+Disallow: /level-system
+Disallow: /internal/
+Disallow: /admin/
+Disallow: /settings/
+Disallow: /cdn-cgi/
+Disallow: /*?q=
+Disallow: /*?search=
+Disallow: /*?sort=
+Disallow: /*?page=
+Disallow: /*?lang=
+Disallow: /*&
+Disallow: /*?token=
+Disallow: /*?session_id=
+Disallow: /*?payment_intent=
+Disallow: /*?checkout_id=
+Disallow: /*?ref=
+Disallow: /*?utm_
+
+# -----------------------------------------------------------------------
+# 📍 SITEMAPS & MACHINE-READABLE INTELLIGENCE
+# -----------------------------------------------------------------------
+Sitemap: https://www.caakus.com/sitemap.xml

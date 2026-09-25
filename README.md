@@ -1,24 +1,35 @@
-# Caakus Admin Polish
+# 🎤 AudioChat - Real-Time Voice Chat Platform
 
-we will work on improving the design of the admin pannel of caakus.com   i  will connect you with the source code on github and you wll only do that
+random call with stranger
 
-This project was built with [Lovable](https://lovable.dev).
+A futuristic web-based platform for random audio-only conversations with gamification, retention features, and monetization.
 
-## Build with Lovable
+## 🚀 Quick Start
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/c007b912-0ee8-4b3f-aee9-3c2ca1d8fb42).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```
+npm install
 npm run dev
 ```
+
+## 🗄️ Database Setup Required
+
+See SETUP.md for complete Supabase and Firebase configuration instructions.
+
+## 🚀 Features
+
+- ✅ Real-time audio calls via WebRTC
+- ✅ YUYU gamification system
+- ✅ Referral tracking & rewards
+- ✅ Multi-language support
+- ✅ Push notifications ready
+- ✅ Ad integration placeholders
+- ✅ Mobile responsive design
+
+For full documentation, see the project files.
+
+## Contact
+
+For support or inquiries:
+
+- Email: brosisus8@gmail.com
+- Instagram: https://www.instagram.com/lewis_yeager2?igsh=MXd1bXkyMzQxZXFlcA== (@lewis_yeager2)

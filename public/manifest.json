@@ -1,0 +1,74 @@
+{
+  "id": "/",
+  "name": "Caakus – Earn Money Video Chatting",
+  "short_name": "Caakus",
+  "description": "The world's first Social Stock Market. Random video chat where you earn real money and YUYU crypto. 1M+ users, 150+ countries.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#0f0f1a",
+  "theme_color": "#7c3aed",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "categories": ["social", "entertainment", "finance"],
+  "launch_handler": {
+      "client_mode": "navigate-existing"
+  },
+  "shortcuts": [
+    {
+      "name": "Start Call",
+      "short_name": "Call",
+      "description": "Start a video call instantly",
+      "url": "/call",
+      "icons": [{ "src": "/logo_128.png", "sizes": "128x128" }]
+    },
+    {
+      "name": "Leaderboard",
+      "short_name": "Ranks",
+      "description": "View top earners",
+      "url": "/leaderboard",
+      "icons": [{ "src": "/logo_128.png", "sizes": "128x128" }]
+    }
+  ],
+  "icons": [
+      {
+          "src": "/logo_128.png",
+          "sizes": "128x128",
+          "type": "image/png",
+          "purpose": "any"
+      },
+      {
+          "src": "/logo_128.png",
+          "sizes": "128x128",
+          "type": "image/png",
+          "purpose": "maskable"
+      },
+      {
+          "src": "/logo.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "any"
+      },
+      {
+          "src": "/logo.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "maskable"
+      },
+      {
+          "src": "/logo.png",
+          "sizes": "512x512",
+          "type": "image/png",
+          "purpose": "any"
+      },
+      {
+          "src": "/logo.png",
+          "sizes": "512x512",
+          "type": "image/png",
+          "purpose": "maskable"
+      }
+  ],
+  "screenshots": [],
+  "related_applications": []
+}
