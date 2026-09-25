@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Switch } from '@/components/ui/switch';
-import { RefreshCw, Send, Clock, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { RefreshCw, Send, Clock, CheckCircle2, AlertTriangle, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import {
   getIndexingStatus,
@@ -74,7 +74,7 @@ export function IndexingPanel() {
 
   return (
     <div className="w-full max-w-full space-y-4">
-      <Card className="border-slate-800 bg-slate-900/60">
+      <Card className="admin-glass-card border backdrop-blur-xl">
         <CardContent className="space-y-4 p-4 sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
@@ -111,24 +111,24 @@ export function IndexingPanel() {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <Button onClick={() => void onRun()} disabled={running} className="gap-2">
-              <Send className="h-4 w-4" />
+            <Button onClick={() => void onRun()} disabled={running} className="admin-indexing-primary gap-2">
+              {running ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
               {running ? 'Submitting…' : 'Submit next batch now'}
             </Button>
-            <Button variant="outline" onClick={() => void load()} disabled={loading} className="gap-2">
+            <Button variant="outline" onClick={() => void load()} disabled={loading} className="admin-action gap-2">
               <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} /> Refresh
             </Button>
           </div>
         </CardContent>
       </Card>
 
-      <Card className="border-slate-800 bg-slate-900/60">
+      <Card className="admin-glass-card border backdrop-blur-xl">
         <CardContent className="p-0">
           <div className="border-b border-slate-800 px-4 py-3 text-sm font-medium text-slate-200 sm:px-6">
             Recent submissions
           </div>
           <div className="w-full max-w-full overflow-x-auto">
-            <table className="w-full min-w-[640px] text-left text-xs sm:text-sm">
+            <table className="admin-terminal-table w-full min-w-[640px] text-left text-xs sm:text-sm">
               <thead className="text-slate-400">
                 <tr>
                   <th className="px-4 py-2 font-medium sm:px-6">When</th>
@@ -174,7 +174,7 @@ export function IndexingPanel() {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-slate-800 bg-slate-950/50 p-3">
+    <div className="admin-indexing-stat rounded-md border p-3">
       <p className="text-[11px] uppercase tracking-wide text-slate-500">{label}</p>
       <p className="mt-1 truncate text-base font-semibold text-slate-100">{value}</p>
     </div>
