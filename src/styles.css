@@ -86,6 +86,11 @@
 .admin-terminal-table th + th, .admin-terminal-table td + td { border-left: 1px solid color-mix(in oklab, var(--admin-accent) 12%, transparent); }
 .admin-terminal-table tbody tr:nth-child(odd) { background: oklch(0.13 0.018 260 / 0.35); }
 .admin-terminal-table tbody tr:hover { background: color-mix(in oklab, var(--admin-accent) 6%, transparent); }
+.admin-shell table { border-collapse: separate; border-spacing: 0; }
+.admin-shell table th { color: color-mix(in oklab, var(--admin-accent) 62%, oklch(0.75 0.02 260)); }
+.admin-shell table th + th, .admin-shell table td + td { border-left: 1px solid color-mix(in oklab, var(--admin-accent) 10%, transparent); }
+.admin-shell table tbody tr:nth-child(odd) { background: oklch(0.13 0.018 260 / 0.3); }
+.admin-shell table tbody tr:hover { background: color-mix(in oklab, var(--admin-accent) 6%, transparent); }
 @keyframes admin-alert { 50% { box-shadow: 0 0 14px oklch(0.67 0.23 15 / 0.32); } }
 @media (max-width: 640px) {
   .admin-tab-scroll { margin-inline: -0.75rem; width: calc(100% + 1.5rem); padding-inline: 0.75rem; scrollbar-width: none; }
