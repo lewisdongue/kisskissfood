@@ -19,6 +19,7 @@ import {
   Ban,
   CheckCircle,
   Trash2,
+  Loader2,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useServerFn } from '@tanstack/react-start';
@@ -122,7 +123,7 @@ export const ModerationInbox: React.FC = () => {
               <SelectItem value="last7d">Last 7 days</SelectItem>
             </SelectContent>
           </Select>
-          <Button variant="outline" size="sm" onClick={() => void load()} disabled={loading} className="md:w-auto">
+          <Button variant="outline" size="sm" onClick={() => void load()} disabled={loading} className="admin-action md:w-auto">
             <RefreshCw className={`mr-2 h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
@@ -136,7 +137,7 @@ export const ModerationInbox: React.FC = () => {
       {loading ? (
         <div className="space-y-3">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="h-28 w-full animate-pulse rounded-xl bg-slate-800/60" />
+            <div key={i} className="admin-loading h-28 w-full animate-pulse rounded-md" />
           ))}
         </div>
       ) : events.length === 0 ? (
@@ -146,7 +147,7 @@ export const ModerationInbox: React.FC = () => {
           {events.map((event) => {
             const restricted = event.banned_until && new Date(event.banned_until) > new Date();
             return (
-              <Card key={event.id} className="w-full max-w-full overflow-hidden border border-slate-700/60 bg-slate-900/60">
+              <Card key={event.id} className="admin-moderation-card w-full max-w-full overflow-hidden border backdrop-blur-xl">
                 <CardContent className="space-y-3 p-4">
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div className="min-w-0">
@@ -155,7 +156,8 @@ export const ModerationInbox: React.FC = () => {
                         {event.user_name ?? 'Unknown user'} · {event.user_email ?? event.user_id}
                       </p>
                     </div>
-                    <Badge variant={restricted ? 'destructive' : 'secondary'} className="shrink-0">
+                    <Badge variant="outline" className={`admin-pill shrink-0 ${restricted ? 'admin-pill-alert' : 'admin-pill-open'}`}>
+                      <span className="admin-pill-dot" />
                       {restricted ? 'Restricted' : 'Open'}
                     </Badge>
                   </div>
@@ -169,7 +171,7 @@ export const ModerationInbox: React.FC = () => {
 
                   <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
                     <Button variant="outline" size="sm" disabled={busyId === event.id} onClick={() => void act(event.id, 'ban24h')}>
-                      <Ban className="mr-2 h-3 w-3" /> Ban 24h
+                      {busyId === event.id ? <Loader2 className="mr-2 h-3 w-3 animate-spin" /> : <Ban className="mr-2 h-3 w-3" />} Ban 24h
                     </Button>
                     <Button variant="outline" size="sm" disabled={busyId === event.id} onClick={() => void act(event.id, 'ban7d')}>
                       <Ban className="mr-2 h-3 w-3" /> Ban 7d

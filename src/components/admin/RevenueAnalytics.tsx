@@ -42,19 +42,19 @@ export const RevenueAnalytics: React.FC<Props> = ({ data, loading }) => (
     <div className="grid w-full max-w-full grid-cols-1 gap-3 lg:grid-cols-2">
       <AdminCard title="Yuyu market" description="Live internal price and flow" icon={Coins}>
         <div className="space-y-3">
-          <div className="flex items-center justify-between rounded-lg bg-slate-800/60 px-3 py-2 text-sm">
+          <div className="admin-data-row flex items-center justify-between rounded-md border px-3 py-2 text-sm">
             <span className="text-slate-300">Current Yuyu price</span>
             <span className="font-semibold text-slate-100">{formatCurrency(data?.yuyuPrice ?? 0)}</span>
           </div>
-          <div className="flex items-center justify-between rounded-lg bg-slate-800/60 px-3 py-2 text-sm">
+          <div className="admin-data-row flex items-center justify-between rounded-md border px-3 py-2 text-sm">
             <span className="text-slate-300">Market phase</span>
             <span className="font-semibold capitalize text-slate-100">{data?.marketPhase ?? 'unknown'}</span>
           </div>
-          <div className="flex items-center justify-between rounded-lg bg-slate-800/60 px-3 py-2 text-sm">
+          <div className="admin-data-row flex items-center justify-between rounded-md border px-3 py-2 text-sm">
             <span className="text-slate-300">Purchases</span>
             <span className="font-semibold text-emerald-400">{formatCurrency(data?.buyUsd ?? 0)}</span>
           </div>
-          <div className="flex items-center justify-between rounded-lg bg-slate-800/60 px-3 py-2 text-sm">
+          <div className="admin-data-row flex items-center justify-between rounded-md border px-3 py-2 text-sm">
             <span className="text-slate-300">Pay-outs</span>
             <span className="font-semibold text-amber-400">{formatCurrency(data?.sellUsd ?? 0)}</span>
           </div>
@@ -65,7 +65,7 @@ export const RevenueAnalytics: React.FC<Props> = ({ data, loading }) => (
         {data && data.recent.length > 0 ? (
           <div className="w-full max-w-full space-y-2">
             {data.recent.map((tx) => (
-              <div key={tx.id} className="flex items-center justify-between gap-2 rounded-lg bg-slate-800/60 px-3 py-2">
+              <div key={tx.id} className="admin-data-row flex items-center justify-between gap-2 rounded-md border px-3 py-2">
                 <div className="min-w-0">
                   <p className="truncate text-sm capitalize text-slate-100">{tx.type}</p>
                   <p className="truncate text-[11px] text-slate-500">{relativeTime(tx.created_at)}</p>

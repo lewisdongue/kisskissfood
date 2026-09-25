@@ -19,6 +19,7 @@ import {
   ChevronLeft,
   ChevronRight,
   RefreshCw,
+  Loader2,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useServerFn } from '@tanstack/react-start';
@@ -39,6 +40,8 @@ export const UserControlPanel: React.FC = () => {
   const [users, setUsers] = useState<AdminUserRow[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [premiumBusyId, setPremiumBusyId] = useState<string | null>(null);
+  const [exporting, setExporting] = useState(false);
 
   useEffect(() => {
     const id = setTimeout(() => {
@@ -66,6 +69,7 @@ export const UserControlPanel: React.FC = () => {
   }, [load]);
 
   const onTogglePremium = async (user: AdminUserRow) => {
+    setPremiumBusyId(user.id);
     const next = !user.is_premium;
     setUsers((list) => list.map((u) => (u.id === user.id ? { ...u, is_premium: next } : u)));
     try {
@@ -74,6 +78,8 @@ export const UserControlPanel: React.FC = () => {
     } catch (error) {
       setUsers((list) => list.map((u) => (u.id === user.id ? { ...u, is_premium: !next } : u)));
       toast.error(error instanceof Error ? error.message : 'Update failed — reverted');
+    } finally {
+      setPremiumBusyId(null);
     }
   };
 
@@ -82,6 +88,7 @@ export const UserControlPanel: React.FC = () => {
       toast.error('Nothing to export on this page');
       return;
     }
+    setExporting(true);
     const header = ['id', 'name', 'email', 'country', 'language', 'yuyu_score', 'balance', 'is_premium', 'created_at', 'last_active_at'];
     const rows = users.map((u) => header.map((k) => JSON.stringify((u as Record<string, unknown>)[k] ?? '')).join(','));
     const blob = new Blob([[header.join(','), ...rows].join('\n')], { type: 'text/csv' });
@@ -92,6 +99,7 @@ export const UserControlPanel: React.FC = () => {
     link.click();
     URL.revokeObjectURL(url);
     toast.success('CSV exported');
+    window.setTimeout(() => setExporting(false), 350);
   };
 
   const maxPage = Math.max(1, Math.ceil(total / PAGE_SIZE));
@@ -138,12 +146,12 @@ export const UserControlPanel: React.FC = () => {
           {loading ? 'Loading users…' : `${formatNumber(total)} users`}
         </h3>
         <div className="flex flex-wrap gap-2">
-          <Button variant="outline" size="sm" onClick={() => void load()} disabled={loading}>
+          <Button variant="outline" size="sm" onClick={() => void load()} disabled={loading} className="admin-action">
             <RefreshCw className={`mr-2 h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
-          <Button variant="outline" size="sm" onClick={exportCsv}>
-            <Download className="mr-2 h-4 w-4" />
+          <Button variant="outline" size="sm" onClick={exportCsv} disabled={exporting} className="admin-action">
+            {exporting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
             Export CSV
           </Button>
         </div>
@@ -152,7 +160,7 @@ export const UserControlPanel: React.FC = () => {
       {loading ? (
         <div className="space-y-3">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="h-28 w-full animate-pulse rounded-xl bg-slate-800/60" />
+            <div key={i} className="admin-loading h-28 w-full animate-pulse rounded-md" />
           ))}
         </div>
       ) : users.length === 0 ? (
@@ -160,14 +168,15 @@ export const UserControlPanel: React.FC = () => {
       ) : (
         <div className="space-y-3">
           {users.map((user) => (
-            <Card key={user.id} className="w-full max-w-full overflow-hidden border border-slate-700/60 bg-slate-900/60">
+            <Card key={user.id} className="admin-user-card w-full max-w-full overflow-hidden border backdrop-blur-xl">
               <CardContent className="space-y-3 p-4">
                 <div className="flex flex-wrap items-start justify-between gap-2">
                   <div className="min-w-0">
                     <p className="truncate font-semibold text-slate-100">{user.name || 'Unnamed'}</p>
                     <p className="truncate text-xs text-slate-400">{user.email}</p>
                   </div>
-                  <Badge variant={user.is_premium ? 'default' : 'secondary'} className="shrink-0">
+                  <Badge variant="outline" className={`admin-pill shrink-0 ${user.is_premium ? 'admin-pill-premium' : 'admin-pill-standard'}`}>
+                    <span className="admin-pill-dot" />
                     {user.is_premium ? 'Premium' : 'Standard'}
                   </Badge>
                 </div>
@@ -175,7 +184,7 @@ export const UserControlPanel: React.FC = () => {
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                   <div className="min-w-0">
                     <p className="text-[10px] uppercase text-slate-500">Yuyu</p>
-                    <p className="truncate text-sm font-semibold text-slate-100">{formatNumber(Number(user.yuyu_score ?? 0))}</p>
+                    <p className="truncate text-sm font-bold text-amber-300">{formatNumber(Number(user.yuyu_score ?? 0))}</p>
                   </div>
                   <div className="min-w-0">
                     <p className="text-[10px] uppercase text-slate-500">Balance</p>
@@ -198,8 +207,8 @@ export const UserControlPanel: React.FC = () => {
                   <span className="truncate">
                     Active {relativeTime(user.last_active_at)} · joined {new Date(user.created_at).toLocaleDateString()}
                   </span>
-                  <Button variant="outline" size="sm" onClick={() => void onTogglePremium(user)}>
-                    <Crown className="mr-2 h-3 w-3" />
+                  <Button variant="outline" size="sm" disabled={premiumBusyId === user.id} onClick={() => void onTogglePremium(user)} className="admin-action w-full sm:w-auto">
+                    {premiumBusyId === user.id ? <Loader2 className="mr-2 h-3 w-3 animate-spin" /> : <Crown className="mr-2 h-3 w-3" />}
                     {user.is_premium ? 'Remove premium' : 'Grant premium'}
                   </Button>
                 </div>
