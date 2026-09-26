@@ -415,6 +415,7 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const bareRoute = isBarePath(pathname);
+  const adminRoute = pathname === "/nathan";
   const contentRoute = isContentPath(pathname) || bareRoute;
   const ssrShellRoute = isSsrShellPath(pathname);
 
@@ -435,27 +436,38 @@ function RootComponent() {
   }, []);
 
   useEffect(() => {
-    if (contentRoute) return;
+    if (contentRoute || adminRoute) return;
     const timer = window.setTimeout(() => {
       void import("../pages/CallPage");
     }, 1200);
     return () => window.clearTimeout(timer);
-  }, [contentRoute]);
+  }, [contentRoute, adminRoute]);
 
   useEffect(() => {
-    if (contentRoute) return;
+    if (contentRoute || adminRoute) return;
     let stop: (() => void) | undefined;
     void import("../services/dailyNotificationScheduler").then((m) => {
       stop = m.startDailyNotificationScheduler();
     });
     return () => stop?.();
-  }, [contentRoute]);
+  }, [contentRoute, adminRoute]);
 
   if (bareRoute) {
     return (
       <RootErrorBoundary>
         <Outlet />
       </RootErrorBoundary>
+    );
+  }
+
+  if (adminRoute) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <RootErrorBoundary>
+          <Toaster position="top-right" />
+          <Outlet />
+        </RootErrorBoundary>
+      </QueryClientProvider>
     );
   }
 

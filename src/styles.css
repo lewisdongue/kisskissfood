@@ -91,6 +91,10 @@
 .admin-shell table th + th, .admin-shell table td + td { border-left: 1px solid color-mix(in oklab, var(--admin-accent) 10%, transparent); }
 .admin-shell table tbody tr:nth-child(odd) { background: oklch(0.13 0.018 260 / 0.3); }
 .admin-shell table tbody tr:hover { background: color-mix(in oklab, var(--admin-accent) 6%, transparent); }
+.admin-shell input, .admin-shell [role="combobox"] { border-color: var(--admin-line); background: oklch(0.13 0.018 260 / 0.8); color: oklch(0.94 0.01 260); }
+.admin-shell input::placeholder { color: oklch(0.63 0.02 260); }
+.admin-shell input:focus-visible, .admin-shell [role="combobox"]:focus-visible { outline-color: var(--admin-accent); border-color: var(--admin-accent); }
+.admin-shell button:not([data-state="active"]):hover { box-shadow: 0 0 18px color-mix(in oklab, var(--admin-accent) 17%, transparent); }
 @keyframes admin-alert { 50% { box-shadow: 0 0 14px oklch(0.67 0.23 15 / 0.32); } }
 @media (max-width: 640px) {
   .admin-tab-scroll { margin-inline: -0.75rem; width: calc(100% + 1.5rem); padding-inline: 0.75rem; scrollbar-width: none; }
