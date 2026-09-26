@@ -98,10 +98,10 @@ export default function AdminDashboard() {
 
   if (access !== 'granted') {
     return (
-      <div className="flex min-h-screen w-full max-w-full items-center justify-center overflow-x-hidden bg-slate-950 p-4">
-        <Card className="w-full max-w-md border border-slate-700/60 bg-slate-900/70">
+      <div className="admin-shell flex min-h-screen w-full max-w-full items-center justify-center overflow-x-hidden p-4">
+        <Card className="admin-glass-card w-full max-w-md border backdrop-blur-xl">
           <CardContent className="space-y-4 p-6 text-center">
-            <Lock className="mx-auto h-8 w-8 text-blue-400" />
+            <Lock className="admin-accent-text mx-auto h-8 w-8" />
             <h1 className="text-xl font-bold text-slate-100">System management</h1>
             {access === 'checking' ? (
               <p className="text-sm text-slate-400">Checking your access…</p>
